@@ -48,9 +48,29 @@ class Api
      * @param string $repoName
      * @return Collection
      */
-    public function fetchParticipation(string $userName, string $repoName): Collection
+    public function fetchParticipations(string $userName, string $repoName): Collection
     {
         return collect($this->fetchAllResults('repo', 'participation', [$userName, $repoName]));
+    }
+
+    /**
+     * @param string $userName
+     * @param string $repoName
+     * @return Collection
+     */
+    public function fetchOpenPullRequests(string $userName, string $repoName): Collection
+    {
+        return collect($this->fetchAllResults('pull_request', 'all', [$userName, $repoName]));
+    }
+
+    /**
+     * @param string $userName
+     * @param string $repoName
+     * @return Collection
+     */
+    public function fetchClosedPullRequests(string $userName, string $repoName): Collection
+    {
+        return collect($this->fetchAllResults('pull_request', 'all', [$userName, $repoName, ['state' => 'closed']]));
     }
 
     /**
@@ -90,6 +110,6 @@ class Api
      */
     private function getCacheKey(string $interfaceName, string $method, array $parameters) : string
     {
-        return sprintf('%s_%s_%s', $interfaceName, $method, implode('_', $parameters));
+        return sprintf('%s_%s_%s', $interfaceName, $method, sha1(serialize($parameters)));
     }
 }
