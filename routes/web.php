@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('contributions/{user}/{repo}', 'ContributionsController@index')->name('contributions');
+Route::get('contributions/{user}/{repo}', '\App\Http\Controllers\Repository\ContributionsController@index')->name('contributions');
+Route::get('statistics/{user}/{repo}', '\App\Http\Controllers\Repository\StatisticsController@index')->name('contributions');
+Route::get('participations/{user}/{repo}', '\App\Http\Controllers\Repository\ParticipationsController@index')->name('participations');

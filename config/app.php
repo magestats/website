@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://opensourcestatistics.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'GMT',
+    'timezone' => 'Europe/Zurich',
 
     /*
     |--------------------------------------------------------------------------
