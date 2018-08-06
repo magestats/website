@@ -26,71 +26,66 @@ class Api
     /**
      * @param string $userName
      * @param string $repoName
+     * @param bool $all
      * @return Collection
      */
-    public function fetchContributors(string $userName, string $repoName): Collection
+    public function fetchContributors(string $userName, string $repoName, bool $all = false): Collection
     {
-        return collect($this->fetchAllResults('repo', 'contributors', [$userName, $repoName]));
+        return collect($this->fetchAllResults('repo', 'contributors', [$userName, $repoName], $all));
     }
 
     /**
      * @param string $userName
      * @param string $repoName
+     * @param bool $all
      * @return Collection
      */
-    public function fetchStatistics(string $userName, string $repoName): Collection
+    public function fetchStatistics(string $userName, string $repoName, bool $all = false): Collection
     {
-        return collect($this->fetchAllResults('repo', 'statistics', [$userName, $repoName]));
+        return collect($this->fetchAllResults('repo', 'statistics', [$userName, $repoName], $all));
     }
 
     /**
      * @param string $userName
      * @param string $repoName
+     * @param bool $all
      * @return Collection
      */
-    public function fetchParticipations(string $userName, string $repoName): Collection
+    public function fetchParticipations(string $userName, string $repoName, bool $all = false): Collection
     {
-        return collect($this->fetchAllResults('repo', 'participation', [$userName, $repoName]));
+        return collect($this->fetchResults('repo', 'participation', [$userName, $repoName], $all));
     }
 
     /**
      * @param string $userName
      * @param string $repoName
+     * @param bool $all
      * @return Collection
      */
-    public function fetchOpenPullRequests(string $userName, string $repoName): Collection
+    public function fetchPullRequests(string $userName, string $repoName, bool $all = false): Collection
     {
-        return collect($this->fetchAllResults('pull_request', 'all', [$userName, $repoName]));
-    }
-
-    /**
-     * @param string $userName
-     * @param string $repoName
-     * @return Collection
-     */
-    public function fetchClosedPullRequests(string $userName, string $repoName): Collection
-    {
-        return collect($this->fetchAllResults('pull_request', 'all', [$userName, $repoName, ['state' => 'closed']]));
+        return collect($this->fetchResults('pull_request', 'all', [$userName, $repoName, ['state' => 'all']], $all));
     }
 
     /**
      * @param string $interfaceName
      * @param string $method
      * @param array $parameters
+     * @param bool $all
      * @return array
      */
-    private function fetchAllResults(string $interfaceName, string $method, array $parameters) : array
+    public function fetchResults(string $interfaceName, string $method, array $parameters, bool $all = false) : array
     {
-        $cacheKey = $this->getCacheKey($interfaceName, $method, $parameters);
-        if(Cache::has($cacheKey)) {
+        $cacheKey = $this->getCacheKey($interfaceName, $method, $parameters, $all);
+        if (Cache::has($cacheKey)) {
             return Cache::get($cacheKey);
         }
 
-        $result = (new ResultPager($this->client))->fetchAll(
-            $this->client->api($interfaceName),
-            $method,
-            $parameters
-        );
+        if ($all) {
+            $result = $this->fetchAll($interfaceName, $method, $parameters);
+        } else {
+            $result = $this->fetch($interfaceName, $method, $parameters);
+        }
 
         $data = [
             self::GITHUB_API_RESULT_UPDATED_AT => now(),
@@ -106,10 +101,41 @@ class Api
      * @param string $interfaceName
      * @param string $method
      * @param array $parameters
+     * @return array
+     */
+    private function fetch(string $interfaceName, string $method, array $parameters) : array
+    {
+        return (new ResultPager($this->client))->fetch(
+            $this->client->api($interfaceName),
+            $method,
+            $parameters
+        );
+    }
+
+    /**
+     * @param string $interfaceName
+     * @param string $method
+     * @param array $parameters
+     * @return array
+     */
+    private function fetchAll(string $interfaceName, string $method, array $parameters) : array
+    {
+        return (new ResultPager($this->client))->fetchAll(
+            $this->client->api($interfaceName),
+            $method,
+            $parameters
+        );
+    }
+
+    /**
+     * @param string $interfaceName
+     * @param string $method
+     * @param array $parameters
+     * @param bool $all
      * @return string
      */
-    private function getCacheKey(string $interfaceName, string $method, array $parameters) : string
+    private function getCacheKey(string $interfaceName, string $method, array $parameters, bool $all) : string
     {
-        return sprintf('%s_%s_%s', $interfaceName, $method, sha1(serialize($parameters)));
+        return sprintf('%s_%s_%s_%d', $interfaceName, $method, sha1(serialize($parameters)), (int) $all);
     }
 }
