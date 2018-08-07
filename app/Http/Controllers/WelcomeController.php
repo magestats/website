@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Statistics;
-
 class WelcomeController extends Controller
 {
-    public function index(Statistics $statistics)
+    public function index()
     {
+        return view('welcome')->with(['title' => null]);
     }
 }

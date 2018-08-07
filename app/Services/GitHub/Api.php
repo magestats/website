@@ -31,7 +31,7 @@ class Api
      */
     public function fetchContributors(string $userName, string $repoName, bool $all = false): Collection
     {
-        return collect($this->fetchAllResults('repo', 'contributors', [$userName, $repoName], $all));
+        return collect($this->fetchResults('repo', 'contributors', [$userName, $repoName], $all));
     }
 
     /**
@@ -42,7 +42,7 @@ class Api
      */
     public function fetchStatistics(string $userName, string $repoName, bool $all = false): Collection
     {
-        return collect($this->fetchAllResults('repo', 'statistics', [$userName, $repoName], $all));
+        return collect($this->fetchResults('repo', 'statistics', [$userName, $repoName], $all));
     }
 
     /**

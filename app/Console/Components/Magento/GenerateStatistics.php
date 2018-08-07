@@ -11,15 +11,19 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class GenerateStatistics extends Command
 {
-    protected $signature = 'magento:generate-statistics';
+    const OPTION_ALL = 'all';
+    protected $signature = 'magento:generate-statistics {--all}';
     protected $description = 'Generate Statistics';
 
     public function handle(PullRequests $pullRequests)
     {
-        $verbosityLevel = $this->getOutput()->getVerbosity();
         $data = [];
+        $all = $this->input->getOption(self::OPTION_ALL);
         foreach ($pullRequests::all() as $item) {
             $year = date('Y', strtotime($item->getOriginal('created')));
+            if(!$all && $year !== date('Y')) {
+                    continue;
+            }
             $month = date('m', strtotime($item->getOriginal('created')));
             $data[$year][$item->getOriginal('author')]['total']['created'][] = [
                 'title' => $item->getOriginal('title'),
@@ -79,15 +83,14 @@ class GenerateStatistics extends Command
         }
 
         $this->info('Store statistics by year');
-        $this->storeByYear($data);
+        $this->storeStatisticsByYear($data);
     }
 
-    private function storeByYear(array $input)
+    private function storeStatisticsByYear(array $input)
     {
         $statisticsByYear = new Statistics\StatisticsByYear();
         foreach ($input as $year => $item) {
             foreach ($item as $author => $row) {
-                $test = 0;
                 $data = [
                     'year' => $year,
                     'author' => $author,

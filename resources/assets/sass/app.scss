@@ -1,9 +1,123 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Heebo:300,500");
 
 // Variables
 @import "variables";
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+// Headings
+h1,h2,h3,h4,h5,h6
+{
+  font-size: 2em;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+// Navbar
+.navbar-default {
+  height: 75px;
+}
+.navbar-inverse {
+  top: 75px;
+}
+
+.navbar-brand {
+  margin: 20px 0;
+  padding: 0 15px;
+  @media (min-width: $grid-float-breakpoint) {
+    .navbar > .container &,
+    .navbar > .container-fluid & {
+      margin-left: 0;
+    }
+  }
+  .logo {
+    width: 200px;
+  }
+}
+
+#navbar .container {
+  -webkit-animation: fadein 1s;
+  -moz-animation: fadein 1s;
+  -ms-animation: fadein 1s;
+  -o-animation: fadein 1s;
+  animation: fadein 1s
+}
+
+
+.navbar-toggle {
+  margin-top: 20px;
+
+  .medium {
+    width: 16px;
+    margin-left: 6px;
+  }
+  .small {
+    width: 10px;
+    margin-left: 12px;
+  }
+}
+
+// Content
+.content {
+  margin-top: 150px;
+  -webkit-animation: fadein 1s;
+  -moz-animation: fadein 1s;
+  -ms-animation: fadein 1s;
+  -o-animation: fadein 1s;
+  animation: fadein 1s;
+  font-weight: 300;
+}
+
+
+// Animations
+@keyframes  fadein {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@-moz-keyframes fadein {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@-ms-keyframes fadein {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
+
+@-o-keyframes fadein {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
+}
