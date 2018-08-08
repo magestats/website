@@ -75,7 +75,7 @@ class Api
      */
     public function fetchPullRequests(string $userName, string $repoName, bool $all = false): Collection
     {
-        return collect($this->fetchResults('pull_request', 'all', [$userName, $repoName, ['state' => 'all']], $all));
+        return collect($this->fetchResults('pull_request', 'all', [$userName, $repoName, ['state' => 'all', 'per_page' => 100]], $all));
     }
 
     /**
