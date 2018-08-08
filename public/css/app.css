@@ -8372,6 +8372,11 @@ h2 {
   top: 75px;
 }
 
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: transparent;
+}
+
 .navbar-brand {
   margin: 20px 0;
   padding: 0 15px;
@@ -8432,5 +8437,17 @@ h2 {
   to {
     opacity: 1;
   }
+}
+
+#fullpage {
+  margin-top: 180px;
+}
+
+#fullpage .section {
+  padding: 15% 5%;
+}
+
+#fullpage .section.orange {
+  background: orange;
 }
 

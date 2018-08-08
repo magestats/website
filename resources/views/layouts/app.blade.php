@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Magestats') }}{{ isset($title) ? ' | ' . $title : '' }}</title>
+    <title>{{ isset($title) ? $title . ' | ': '' }}{{ config('app.name', 'Magestats') }}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -32,7 +32,8 @@
                 <span class="icon-bar small"></span>
             </button>
             <a class="navbar-brand" href="/">
-                <img src="{{ asset('images/magestats.svg') }}" alt="{{ config('app.name', 'Magestats') }}" class="logo"/>
+                <img src="{{ asset('images/magestats.svg') }}" alt="{{ config('app.name', 'Magestats') }}"
+                     class="logo"/>
             </a>
         </div>
         <div id="navbar" class="navbar navbar-inverse navbar-fixed-top navbar-collapse collapse">
@@ -40,20 +41,20 @@
                 <ul class="nav navbar-nav">
                     <li{{ Request::is('contributors') ? ' class=active' : null }}><a href="{{route('contributors')}}">Contributors</a>
                     </li>
-                    <li class="dropdown{{ Request::is('projects*') ? ' active' : null }}">
+                    <li class="dropdown{{ Request::is('repositories/*') ? ' active' : null }}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Projects<span class="caret"></span></a>
+                           aria-expanded="false">Repositories<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-header">Public Repositories</li>
                             @foreach (explode(',', env('MAGENTO_REPOS')) as $repo)
-                                <li{{ Request::is('projects/' . $repo) ? ' class=active' : null }}><a
-                                            href="/projects/{{ $repo }}">{{ $repo }}</a></li>
+                                <li{{ Request::is('repositories/' . $repo) ? ' class=active' : null }}><a
+                                            href="/repositories/{{ $repo }}">{{ $repo }}</a></li>
                             @endforeach
                             <li role="separator" class="divider"></li>
                             <li class="dropdown-header">Partner and Commerce Repositories</li>
                             @foreach (explode(',', env('MAGENTO_PRIVATE_REPOS')) as $repo)
-                                <li{{ Request::is('projects/' . $repo) ? ' class=active' : null }}><a
-                                            href="/projects/{{ $repo }}">{{ $repo }}</a></li>
+                                <li{{ Request::is('repositories/' . $repo) ? ' class=active' : null }}><a
+                                            href="/repositories/{{ $repo }}">{{ $repo }}</a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -65,10 +66,7 @@
         </div>
     </div>
 </nav>
-
-<div class="container content">
-    @yield('content')
-</div>
+@yield('content')
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 </body>

@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class GenerateStatistics extends Command
 {
     const OPTION_ALL = 'all';
-    protected $signature = 'magento:generate-statistics {--all}';
+    protected $signature = 'magento:generate:statistics {--all}';
     protected $description = 'Generate Statistics';
 
     public function handle(PullRequests $pullRequests)

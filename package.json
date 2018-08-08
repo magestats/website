@@ -19,6 +19,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "gulp": "^3.9.1"
+        "chart.js": "^2.7.2",
+        "gulp": "^3.9.1",
+        "vue-chartjs": "^3.4.0"
     }
 }

@@ -19,13 +19,19 @@ class PullRequests extends Model
      * @var array
      */
     protected $fillable = [
-        'number',
+        'pr_id',
         'node_id',
-        'state',
+        'html_url',
+        'number',
         'repo',
+        'state',
         'title',
         'author',
         'author_association',
+        'labels',
+        'label_ids',
+        'milestone',
+        'milestone_url',
         'created',
         'updated',
         'closed',

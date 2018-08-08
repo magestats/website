@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \App\Console\Components\Magento\FetchPullRequests::class,
+        \App\Console\Components\Magento\FetchRepositories::class,
         \App\Console\Components\Magento\GenerateStatistics::class,
     ];
 
@@ -25,8 +26,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('magento:fetch:repositories')->hourly();
+        $schedule->command('magento:fetch:pullrequests')->everyFifteenMinutes();
     }
 
     /**

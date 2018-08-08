@@ -29,6 +29,17 @@ class Api
      * @param bool $all
      * @return Collection
      */
+    public function fetchRepositories(string $userName, string $repoName, bool $all = false): Collection
+    {
+        return collect($this->fetchResults('repo', 'show', [$userName, $repoName], $all));
+    }
+
+    /**
+     * @param string $userName
+     * @param string $repoName
+     * @param bool $all
+     * @return Collection
+     */
     public function fetchContributors(string $userName, string $repoName, bool $all = false): Collection
     {
         return collect($this->fetchResults('repo', 'contributors', [$userName, $repoName], $all));
