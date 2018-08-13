@@ -45,14 +45,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Repositories<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li class="dropdown-header">Public Repositories</li>
                             @foreach (explode(',', env('MAGENTO_REPOS')) as $repo)
-                                <li{{ Request::is('repositories/' . $repo) ? ' class=active' : null }}><a
-                                            href="/repositories/{{ $repo }}">{{ $repo }}</a></li>
-                            @endforeach
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Partner and Commerce Repositories</li>
-                            @foreach (explode(',', env('MAGENTO_PRIVATE_REPOS')) as $repo)
                                 <li{{ Request::is('repositories/' . $repo) ? ' class=active' : null }}><a
                                             href="/repositories/{{ $repo }}">{{ $repo }}</a></li>
                             @endforeach

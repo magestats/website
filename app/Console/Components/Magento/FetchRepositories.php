@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class FetchRepositories extends Command
 {
     protected $signature = 'magento:fetch:repositories';
-    protected $description = 'Fetch Repository Informations';
+    protected $description = 'Fetch Repositories Information';
 
     public function handle(Api $api, Repositories $repositories)
     {
@@ -24,7 +24,7 @@ class FetchRepositories extends Command
             try {
                 $result = $this->fetchRepository($api, $repo);
                 $data = [
-                    'repo_id' => $result['id'],
+                    'repo_id' => (int)$result['id'],
                     'node_id' => $result['node_id'],
                     'owner' => $result['owner']['login'],
                     'owner_type' => $result['owner']['type'],
@@ -33,17 +33,17 @@ class FetchRepositories extends Command
                     'html_url' => $result['html_url'],
                     'description' => $result['description'],
                     'homepage' => $result['homepage'],
-                    'has_issues' => (int) $result['has_issues'],
-                    'has_projects' => (int) $result['has_projects'],
-                    'has_downloads' => (int) $result['has_downloads'],
-                    'has_wiki' => (int) $result['has_wiki'],
-                    'size' => (int) $result['size'],
-                    'stargazers_count' => (int) $result['stargazers_count'],
-                    'watchers_count' => (int) $result['watchers_count'],
-                    'network_count' => (int) $result['network_count'],
-                    'subscribers_count' => (int) $result['subscribers_count'],
-                    'forks' => (int) $result['forks'],
-                    'open_issues' => (int) $result['open_issues'],
+                    'has_issues' => (int)$result['has_issues'],
+                    'has_projects' => (int)$result['has_projects'],
+                    'has_downloads' => (int)$result['has_downloads'],
+                    'has_wiki' => (int)$result['has_wiki'],
+                    'size' => (int)$result['size'],
+                    'stargazers_count' => (int)$result['stargazers_count'],
+                    'watchers_count' => (int)$result['watchers_count'],
+                    'network_count' => (int)$result['network_count'],
+                    'subscribers_count' => (int)$result['subscribers_count'],
+                    'forks' => (int)$result['forks'],
+                    'open_issues' => (int)$result['open_issues'],
                     'default_branch' => $result['default_branch'],
                     'created' => $result['created_at'],
                     'updated' => $result['updated_at'],
@@ -60,7 +60,7 @@ class FetchRepositories extends Command
      * @param string $repository
      * @return array
      */
-    private function fetchRepository(Api $api, string $repository) : array
+    private function fetchRepository(Api $api, string $repository): array
     {
         list($user, $repo) = explode('/', $repository);
         $result = $api->fetchRepositories($user, $repo, true)->toArray();

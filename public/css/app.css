@@ -8425,6 +8425,11 @@ h2 {
   }
 }
 
+.selector {
+  text-align: right;
+  margin: 15px 0;
+}
+
 @keyframes fadein {
   from {
     opacity: 0;
@@ -8447,6 +8452,13 @@ h2 {
 
 .fullpage .section {
   padding: 15% 5%;
+}
+
+.fullpage .section h2 {
+  font-size: 3em;
+  text-align: center;
+  font-weight: bold;
+  line-height: 2em;
 }
 
 .fullpage .section.orange {

@@ -36,6 +36,8 @@ class CreateRepositoriesTable extends Migration
             $table->integer('forks');
             $table->integer('open_issues');
             $table->string('default_branch');
+            $table->dateTimeTz('created')->nullable();
+            $table->dateTimeTz('updated')->nullable();
             $table->timestamps();
         });
     }

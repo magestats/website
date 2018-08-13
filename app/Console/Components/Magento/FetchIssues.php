@@ -2,85 +2,70 @@
 
 namespace App\Console\Components\Magento;
 
-use App\PullRequests;
+use App\Issues;
 use Illuminate\Console\Command;
 use App\Services\GitHub\Api;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class FetchPullRequests extends Command
+class FetchIssues extends Command
 {
     const OPTION_ALL = 'all';
-    protected $signature = 'magento:fetch:pullrequests {--all}';
-    protected $description = 'Fetch Pull Requests';
+    protected $signature = 'magento:fetch:issues {--all}';
+    protected $description = 'Fetch Issues Information';
 
-    public function handle(Api $api, PullRequests $pullRequests)
+    public function handle(Api $api, Issues $issues)
     {
-        $verbosityLevel = $this->getOutput()->getVerbosity();
         $all = $this->input->getOption(self::OPTION_ALL);
-        $repositories = explode(',', getenv('MAGENTO_REPOS'));
-        foreach ($repositories as $repository) {
-            if ($verbosityLevel >= OutputInterface::VERBOSITY_NORMAL) {
-                $this->info(sprintf('Fetch %s', $repository));
-            }
+        $verbosityLevel = $this->getOutput()->getVerbosity();
+        $publicRepos = explode(',', getenv('MAGENTO_REPOS'));
+        $privateRepos = explode(',', getenv('MAGENTO_PRIVATE_REPOS'));
+        $repos = array_merge($publicRepos, $privateRepos);
+        foreach ($repos as $repo) {
+            $this->output->writeln(sprintf('<info>Fetch Repository: %s</info>', $repo));
             try {
-                $result = $this->fetchPullRequests($api, $repository, $all);
+                $result = $this->fetchIssues($api, $repo, $all);
                 foreach ($result as $item) {
+                    if (isset($item['pull_request'])) {
+                        continue;
+                    }
+
                     if ($verbosityLevel >= OutputInterface::VERBOSITY_VERBOSE) {
                         $this->comment(sprintf('[%s] - %s by %s', $item['number'], $item['title'], $item['user']['login']));
                     }
-
                     $data = [
-                        'pr_id' => (int)$item['id'],
+                        'issue_id' => (int)$item['id'],
                         'node_id' => $item['node_id'],
                         'html_url' => $item['html_url'],
                         'number' => (int)$item['number'],
-                        'repo' => $repository,
+                        'repo' => $repo,
                         'state' => $item['state'],
                         'title' => $item['title'],
                         'author' => $item['user']['login'],
                         'author_association' => $item['author_association'],
                         'labels' => $this->getLabels($item['labels']),
                         'label_ids' => $this->getLabelIds($item['labels']),
-                        'milestone' => $item['milestone']['title'],
-                        'milestone_url' => $item['milestone']['html_url'],
                         'created' => $item['created_at'],
                         'updated' => $item['updated_at'],
                         'closed' => $item['closed_at'],
-                        'merged' => $item['merged_at'],
                         'meta' => serialize($item),
                     ];
-
-                    $pullRequests->store($data);
+                    $issues->store($data);
                 }
             } catch (\Exception $e) {
-                $this->warn($e->getMessage());
+                $this->output->writeln(sprintf('<error>%s</error>', $e->getMessage()));
             }
         }
     }
 
     /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-            [self::OPTION_ALL, null, InputOption::VALUE_OPTIONAL, 'Fetch all', null],
-        ];
-    }
-
-    /**
      * @param Api $api
      * @param string $repository
-     * @param bool $all
      * @return array
      */
-    private function fetchPullRequests(Api $api, string $repository, bool $all): array
+    private function fetchIssues(Api $api, string $repository, bool $all) : array
     {
         list($user, $repo) = explode('/', $repository);
-        $result = $api->fetchPullRequests($user, $repo, $all)->toArray();
+        $result = $api->fetchIssues($user, $repo, $all)->toArray();
         return $result[Api::GITHUB_API_RESULT_DATA];
     }
 

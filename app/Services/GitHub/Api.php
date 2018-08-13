@@ -40,6 +40,17 @@ class Api
      * @param bool $all
      * @return Collection
      */
+    public function fetchIssues(string $userName, string $repoName, bool $all = false): Collection
+    {
+        return collect($this->fetchResults('issue', 'all', [$userName, $repoName, ['state' => 'all', 'per_page' => 100]], $all));
+    }
+
+    /**
+     * @param string $userName
+     * @param string $repoName
+     * @param bool $all
+     * @return Collection
+     */
     public function fetchContributors(string $userName, string $repoName, bool $all = false): Collection
     {
         return collect($this->fetchResults('repo', 'contributors', [$userName, $repoName], $all));

@@ -50,7 +50,7 @@ class Statistics
     {
         $data = [
             'title' => $year,
-            'labels' => $this->getMonthRange(),
+            'labels' => $this->getMonthRange($year),
         ];
         $created = $this->fetchCreatedPullRequestsByYear($year);
         $closed = $this->fetchClosedPullRequestsByYear($year);
@@ -73,8 +73,8 @@ class Statistics
     public function storePullRequestsByRepository(string $repository, int $year)
     {
         $data = [
-            'title' => sprintf('%s / %s', $repository, $year),
-            'labels' => $this->getMonthRange(),
+            'title' => sprintf('%s - %s', $repository, $year),
+            'labels' => $this->getMonthRange($year),
         ];
         $created = $this->fetchCreatedPullRequestsByYear($year);
         $closed = $this->fetchClosedPullRequestsByYear($year);
@@ -87,7 +87,7 @@ class Statistics
         ];
 
         $data['datasets'] = $datasets;
-        $this->storeDataByYear($repository, $year, $data);
+        $this->storeDataByYear(sprintf('%s/year', $repository), $year, $data);
     }
 
     /**
@@ -134,6 +134,9 @@ class Statistics
     private function fetchPullRequestsByStatusAndYear(string $status, int $year): array
     {
         $data = $this->getRangeArray(1, 12);
+        if (Carbon::create($year)->isCurrentYear()) {
+            $data = $this->getRangeArray(1, date('n'));
+        }
         $result = $this->pullRequests
             ->where($status, '>', Carbon::createFromDate($year)->firstOfYear())
             ->where($status, '<', Carbon::createFromDate($year)->lastOfYear())
@@ -168,22 +171,36 @@ class Statistics
         return $data;
     }
 
-    private function getMonthRange()
+    /**
+     * @param int $year
+     * @return array
+     */
+    private function getMonthRange(int $year): array
     {
-        return [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December'
+        $data = [
+            1 => 'January',
+            2 => 'February',
+            3 => 'March',
+            4 => 'April',
+            5 => 'May',
+            6 => 'June',
+            7 => 'July',
+            8 => 'August',
+            9 => 'September',
+            10 => 'October',
+            11 => 'November',
+            12 => 'December'
         ];
+
+        if (Carbon::create($year)->isCurrentYear()) {
+            foreach ($data as $month => $row) {
+                if ($month > date('n')) {
+                    unset($data[$month]);
+                }
+            }
+        }
+
+        return array_values($data);
     }
 
     private function getDataset(string $label, array $data, array $color)

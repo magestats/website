@@ -8,17 +8,19 @@
             'year': String
         },
         created () {
-            this.$root.loadFromStorage('/' + this.year + '/' + this.repo + '.json', this.renderLineChart);
+            this.loadData(this.year, this.repo);
         },
-
         methods: {
             renderLineChart: function ()
             {
-                console.log(this.$root.response.datasets);
                 this.renderChart({
                     labels: this.$root.response.labels,
                     datasets: this.$root.response.datasets
-                }, {responsive: true, maintainAspectRatio: false})
+                }, {responsive: true, maintainAspectRatio: false, elements: {line: {tension: 0}}})
+            },
+
+            loadData: function (year, repo) {
+                this.$root.loadFromStorage('/' + year + '/' + repo + '.json', this.renderLineChart);
             }
         }
     }

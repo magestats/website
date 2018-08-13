@@ -82,6 +82,11 @@ h2 {
   }
 }
 
+.selector {
+  text-align: right;
+  margin: 15px 0;
+}
+
 // Animations
 @keyframes  fadein {
   from {
@@ -133,6 +138,12 @@ h2 {
 .fullpage {
   .section {
     padding: 15% 5%;
+    h2 {
+      font-size: 3em;
+      text-align: center;
+      font-weight: bold;
+      line-height: 2em;
+    }
     &.orange {
       background: orange;
     }
