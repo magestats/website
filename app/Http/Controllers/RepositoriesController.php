@@ -10,6 +10,9 @@ class RepositoriesController extends Controller
     {
         return view('repositories')->with([
             'title' => sprintf('%s/%s', $name, $repo),
-            'data' => $repositories->where('owner', $name)->where('name', $repo)->first()->toArray()]);
+            'repo' => sprintf('%s/%s', $name, $repo),
+            'year' => date('Y'),
+            'data' => $repositories->where('owner', $name)->where('name', $repo)->get()->toArray()
+            ]);
     }
 }

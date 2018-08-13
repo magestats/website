@@ -67,7 +67,7 @@ h2 {
 
 // Content
 .content {
-  margin-top: 150px;
+  margin-top: 80px;
   -webkit-animation: fadein 1s;
   -moz-animation: fadein 1s;
   -ms-animation: fadein 1s;
@@ -76,6 +76,11 @@ h2 {
   font-weight: 300;
 }
 
+@media (min-width: $grid-float-breakpoint) {
+  .content {
+    margin-top: 150px;
+  }
+}
 
 // Animations
 @keyframes  fadein {
@@ -125,8 +130,7 @@ h2 {
 
 // Fullpage
 
-#fullpage {
-  margin-top: 180px;
+.fullpage {
   .section {
     padding: 15% 5%;
     &.orange {

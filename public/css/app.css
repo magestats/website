@@ -8413,10 +8413,16 @@ h2 {
 }
 
 .content {
-  margin-top: 150px;
+  margin-top: 80px;
   -webkit-animation: fadein 1s;
   animation: fadein 1s;
   font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  .content {
+    margin-top: 150px;
+  }
 }
 
 @keyframes fadein {
@@ -8439,15 +8445,11 @@ h2 {
   }
 }
 
-#fullpage {
-  margin-top: 180px;
-}
-
-#fullpage .section {
+.fullpage .section {
   padding: 15% 5%;
 }
 
-#fullpage .section.orange {
+.fullpage .section.orange {
   background: orange;
 }
 

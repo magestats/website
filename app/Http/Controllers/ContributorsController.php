@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Statistics\StatisticsByYear;
-
 class ContributorsController extends Controller
 {
-    public function index(StatisticsByYear $statisticsByYear)
+    public function index()
     {
         return view('contributors')->with(['title' => 'Contributors']);
     }

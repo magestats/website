@@ -52,7 +52,6 @@ class FetchPullRequests extends Command
                     ];
 
                     $pullRequests->store($data);
-
                 }
             } catch (\Exception $e) {
                 $this->warn($e->getMessage());
@@ -87,7 +86,7 @@ class FetchPullRequests extends Command
     private function getLabels(array $item)
     {
         $data = [];
-        foreach($item as $label) {
+        foreach ($item as $label) {
             $data[] = $label['name'];
         }
         return implode(',', $data);
@@ -96,7 +95,7 @@ class FetchPullRequests extends Command
     private function getLabelIds(array $item)
     {
         $data = [];
-        foreach($item as $label) {
+        foreach ($item as $label) {
             $data[] = $label['id'];
         }
         return implode(',', $data);

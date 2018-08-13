@@ -45,6 +45,8 @@ class FetchRepositories extends Command
                     'forks' => (int) $result['forks'],
                     'open_issues' => (int) $result['open_issues'],
                     'default_branch' => $result['default_branch'],
+                    'created' => $result['created_at'],
+                    'updated' => $result['updated_at'],
                 ];
                 $repositories->store($data);
             } catch (\Exception $e) {

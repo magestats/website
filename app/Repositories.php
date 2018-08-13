@@ -40,6 +40,8 @@ class Repositories extends Model
         'forks',
         'open_issues',
         'default_branch',
+        'created',
+        'updated'
     ];
 
     /**
