@@ -19673,7 +19673,7 @@ module.exports = __webpack_require__(226);
 
 __webpack_require__(147);
 window.Vue = __webpack_require__(170);
-Vue.component('repository-pullrequests', __webpack_require__(238));
+Vue.component('repository-chart', __webpack_require__(241));
 Chart.defaults.global.animation.duration = 0;
 Chart.defaults.global.hover.animationDuration = 0;
 Chart.defaults.global.responsiveAnimationDuration = 0;
@@ -19688,7 +19688,7 @@ Chart.plugins.register({
             if (!meta.hidden) {
                 meta.data.forEach(function (element, index) {
                     // Draw the text in black, with the specified font
-                    ctx.fillStyle = 'rgb(50, 50, 50, 0.8)';
+                    ctx.fillStyle = element._model.borderColor.replace('0.8', '1');
 
                     var fontSize = 12;
                     var fontStyle = 300;
@@ -19704,6 +19704,9 @@ Chart.plugins.register({
 
                     var padding = 5;
                     var position = element.tooltipPosition();
+                    if (dataString == '0') {
+                        dataString = '';
+                    }
                     ctx.fillText(dataString, position.x, position.y - fontSize / 2 - padding);
                 });
             }
@@ -74755,13 +74758,16 @@ module.exports = {
 /* 235 */,
 /* 236 */,
 /* 237 */,
-/* 238 */
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(174)
 /* script */
-var __vue_script__ = __webpack_require__(239)
+var __vue_script__ = __webpack_require__(242)
 /* template */
 var __vue_template__ = null
 /* template functional */
@@ -74780,7 +74786,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/repository-pullrequests.vue"
+Component.options.__file = "resources/assets/js/components/repository-chart.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -74789,9 +74795,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-56a97236", Component.options)
+    hotAPI.createRecord("data-v-5fdecf9c", Component.options)
   } else {
-    hotAPI.reload("data-v-56a97236", Component.options)
+    hotAPI.reload("data-v-5fdecf9c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -74802,7 +74808,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 239 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -17,9 +17,7 @@ class FetchIssues extends Command
     {
         $all = $this->input->getOption(self::OPTION_ALL);
         $verbosityLevel = $this->getOutput()->getVerbosity();
-        $publicRepos = explode(',', getenv('MAGENTO_REPOS'));
-        $privateRepos = explode(',', getenv('MAGENTO_PRIVATE_REPOS'));
-        $repos = array_merge($publicRepos, $privateRepos);
+        $repos = explode(',', getenv('MAGENTO_REPOS'));
         foreach ($repos as $repo) {
             $this->output->writeln(sprintf('<info>Fetch Repository: %s</info>', $repo));
             try {
@@ -47,7 +45,7 @@ class FetchIssues extends Command
                         'created' => $item['created_at'],
                         'updated' => $item['updated_at'],
                         'closed' => $item['closed_at'],
-                        'meta' => serialize($item),
+                        'meta' => json_encode($item),
                     ];
                     $issues->store($data);
                 }

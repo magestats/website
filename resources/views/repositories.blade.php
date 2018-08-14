@@ -30,7 +30,15 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2>Pull Requests</h2>
-                <repository-pullrequests year="{{ $year }}" repo="{{ $repo }}/year"></repository-pullrequests>
+                <repository-chart year="{{ $year }}" repo="{{ $repo }}/pullrequests"></repository-chart>
+                <br />
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Issues</h2>
+                <repository-chart year="{{ $year }}" repo="{{ $repo }}/issues"></repository-chart>
             </div>
         </div>
     </div>

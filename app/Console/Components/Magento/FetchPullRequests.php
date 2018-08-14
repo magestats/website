@@ -48,7 +48,7 @@ class FetchPullRequests extends Command
                         'updated' => $item['updated_at'],
                         'closed' => $item['closed_at'],
                         'merged' => $item['merged_at'],
-                        'meta' => serialize($item),
+                        'meta' => json_encode($item),
                     ];
 
                     $pullRequests->store($data);
@@ -57,18 +57,6 @@ class FetchPullRequests extends Command
                 $this->warn($e->getMessage());
             }
         }
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-            [self::OPTION_ALL, null, InputOption::VALUE_OPTIONAL, 'Fetch all', null],
-        ];
     }
 
     /**

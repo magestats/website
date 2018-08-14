@@ -1,6 +1,6 @@
 require('./bootstrap');
 window.Vue = require('vue');
-Vue.component('repository-pullrequests', require('./components/repository-pullrequests.vue'));
+Vue.component('repository-chart', require('./components/repository-chart.vue'));
 Chart.defaults.global.animation.duration = 0;
 Chart.defaults.global.hover.animationDuration = 0;
 Chart.defaults.global.responsiveAnimationDuration = 0;
@@ -15,7 +15,7 @@ Chart.plugins.register({
             if (!meta.hidden) {
                 meta.data.forEach(function(element, index) {
                     // Draw the text in black, with the specified font
-                    ctx.fillStyle = 'rgb(50, 50, 50, 0.8)';
+                    ctx.fillStyle = element._model.borderColor.replace('0.8', '1');
 
                     var fontSize = 12;
                     var fontStyle = 300;
@@ -31,6 +31,9 @@ Chart.plugins.register({
 
                     var padding = 5;
                     var position = element.tooltipPosition();
+                    if(dataString == '0') {
+                        dataString = '';
+                    }
                     ctx.fillText(dataString, position.x, position.y - (fontSize / 2) - padding);
                 });
             }

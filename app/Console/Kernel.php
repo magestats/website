@@ -28,10 +28,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('magento:fetch:repositories')->hourly();
-        $schedule->command('magento:fetch:pullrequests')->everyFifteenMinutes();
-        $schedule->command('magento:fetch:issues')->everyFifteenMinutes();
-        $schedule->command('magento:generate:statistics')->everyFifteenMinutes();
+        $schedule->command('magento:generate:statistics', ['--online'])->everyMinute();
     }
 
     /**

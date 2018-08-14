@@ -8,148 +8,37 @@ use Illuminate\Support\Facades\Storage;
 class Statistics
 {
     const DATASET_FILL = false;
+    const DATASET_TRANSPARENCY = 0.8;
+    const STATUS_CLOSED = 'closed';
+    const STATUS_CREATED = 'created';
+    const STATUS_MERGED = 'merged';
 
     /**
      * @var PullRequests
      */
-    private $pullRequests;
+    protected $pullRequests;
     /**
-     * @var array
+     * @var Issues
      */
-    private $created;
-    /**
-     * @var array
-     */
-    private $closed;
-    /**
-     * @var array
-     */
-    private $merged;
-    /**
-     * @var array
-     */
-    private $createdColor = [185,247,234];
-    /**
-     * @var array
-     */
-    private $closedColor = [188,183,184];
-    /**
-     * @var array
-     */
-    private $mergedColor = [255,154,114];
+    protected $issues;
 
-    public function __construct(PullRequests $pullRequests)
+    /**
+     * @var array
+     */
+    protected $createdColor = [159, 215, 203];
+    /**
+     * @var array
+     */
+    protected $closedColor = [188, 183, 184];
+    /**
+     * @var array
+     */
+    protected $mergedColor = [255, 154, 114];
+
+    public function __construct(PullRequests $pullRequests, Issues $issues)
     {
         $this->pullRequests = $pullRequests;
-    }
-
-    /**
-     * @param int $year
-     */
-    public function storePullRequests(int $year)
-    {
-        $data = [
-            'title' => $year,
-            'labels' => $this->getMonthRange($year),
-        ];
-        $created = $this->fetchCreatedPullRequestsByYear($year);
-        $closed = $this->fetchClosedPullRequestsByYear($year);
-        $merged = $this->fetchMergedPullRequestsByYear($year);
-
-        $datasets = [
-            $this->getDataset('Merged', $merged['total'], $this->mergedColor),
-            $this->getDataset('Created', $created['total'], $this->createdColor),
-            $this->getDataset('Closed', $closed['total'], $this->closedColor),
-        ];
-
-        $data['datasets'] = $datasets;
-        $this->storeDataByYear('year', $year, $data);
-    }
-
-    /**
-     * @param string $repository
-     * @param int $year
-     */
-    public function storePullRequestsByRepository(string $repository, int $year)
-    {
-        $data = [
-            'title' => sprintf('%s - %s', $repository, $year),
-            'labels' => $this->getMonthRange($year),
-        ];
-        $created = $this->fetchCreatedPullRequestsByYear($year);
-        $closed = $this->fetchClosedPullRequestsByYear($year);
-        $merged = $this->fetchMergedPullRequestsByYear($year);
-
-        $datasets = [
-            $this->getDataset('Merged', $merged[$repository], $this->mergedColor, 'line'),
-            $this->getDataset('Created', $created[$repository], $this->createdColor),
-            $this->getDataset('Closed', $closed[$repository], $this->closedColor),
-        ];
-
-        $data['datasets'] = $datasets;
-        $this->storeDataByYear(sprintf('%s/year', $repository), $year, $data);
-    }
-
-    /**
-     * @param int $year
-     * @return array
-     */
-    private function fetchCreatedPullRequestsByYear(int $year): array
-    {
-        if (!$this->created) {
-            $this->created = $this->fetchPullRequestsByStatusAndYear('created', $year);
-        }
-        return $this->created;
-    }
-
-    /**
-     * @param int $year
-     * @return array
-     */
-    private function fetchClosedPullRequestsByYear(int $year): array
-    {
-        if (!$this->closed) {
-            $this->closed = $this->fetchPullRequestsByStatusAndYear('closed', $year);
-        }
-        return $this->closed;
-    }
-
-    /**
-     * @param int $year
-     * @return array
-     */
-    private function fetchMergedPullRequestsByYear(int $year): array
-    {
-        if (!$this->merged) {
-            $this->merged = $this->fetchPullRequestsByStatusAndYear('merged', $year);
-        }
-        return $this->merged;
-    }
-
-    /**
-     * @param string $status
-     * @param int $year
-     * @return array
-     */
-    private function fetchPullRequestsByStatusAndYear(string $status, int $year): array
-    {
-        $data = $this->getRangeArray(1, 12);
-        if (Carbon::create($year)->isCurrentYear()) {
-            $data = $this->getRangeArray(1, date('n'));
-        }
-        $result = $this->pullRequests
-            ->where($status, '>', Carbon::createFromDate($year)->firstOfYear())
-            ->where($status, '<', Carbon::createFromDate($year)->lastOfYear())
-            ->orderBy($status, 'ASC')
-            ->get()
-            ->toArray();
-
-        foreach ($result as $item) {
-            $month = Carbon::createFromTimestamp(strtotime($item[$status]))->month;
-            $data[$item['repo']][$month]++;
-            $data['total'][$month]++;
-        }
-        return $data;
+        $this->issues = $issues;
     }
 
     /**
@@ -157,7 +46,7 @@ class Statistics
      * @param int $end
      * @return array
      */
-    private function getRangeArray(int $start, int $end): array
+    protected function getRangeArray(int $start, int $end): array
     {
         $data = [];
         $publicRepos = explode(',', getenv('MAGENTO_REPOS'));
@@ -175,7 +64,7 @@ class Statistics
      * @param int $year
      * @return array
      */
-    private function getMonthRange(int $year): array
+    protected function getMonthRange(int $year): array
     {
         $data = [
             1 => 'January',
@@ -210,16 +99,13 @@ class Statistics
      * @param string $type
      * @return array
      */
-    private function getDataset(string $label, array $data, array $color, string $type = 'bar')
+    protected function getDataset(string $label, array $data, array $color, string $type = 'bar')
     {
-        $transparency = 0.8;
-        if(!self::DATASET_FILL && $type === 'line') {
-            $transparency = 1;
-        }
+        $transparency = self::DATASET_TRANSPARENCY;
         return [
             'label' => $label,
             'data' => array_values($data),
-            "fill" => self::DATASET_FILL,
+            'fill' => self::DATASET_FILL,
             'backgroundColor' => sprintf('rgba(%s, %s)', implode(',', $color), $transparency),
             'borderColor' => sprintf('rgba(%s, %s)', implode(',', $color), $transparency),
             'pointBackgroundColor' => sprintf('rgba(%s, %s)', implode(',', $color), $transparency),
@@ -234,7 +120,7 @@ class Statistics
      * @param int $year
      * @param array $data
      */
-    private function storeDataByYear(string $filename, int $year, array $data)
+    protected function storeDataByYear(string $filename, int $year, array $data)
     {
         $json = json_encode($data, true);
         Storage::put(sprintf('public/%d/%s.json', $year, $filename), $json, 'public');

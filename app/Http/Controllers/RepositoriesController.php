@@ -11,9 +11,15 @@ class RepositoriesController extends Controller
         $data = $repositories->where('owner', $name)->where('name', $repo)->first()->toArray();
         $created = date('Y', strtotime($data['created']));
 
+        if($year === date('Y')) {
+            return redirect(sprintf('/repositories/%s/%s', $name, $repo));
+        }
+
         if (!$year) {
             $year = date('Y');
         }
+
+
 
         if ($year >= $created && $year <= date('Y')) {
             return view('repositories')->with([

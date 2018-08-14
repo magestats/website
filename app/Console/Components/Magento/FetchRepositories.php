@@ -16,9 +16,7 @@ class FetchRepositories extends Command
 
     public function handle(Api $api, Repositories $repositories)
     {
-        $publicRepos = explode(',', getenv('MAGENTO_REPOS'));
-        $privateRepos = explode(',', getenv('MAGENTO_PRIVATE_REPOS'));
-        $repos = array_merge($publicRepos, $privateRepos);
+        $repos = explode(',', getenv('MAGENTO_REPOS'));
         foreach ($repos as $repo) {
             $this->output->writeln(sprintf('<info>Fetch Repository: %s</info>', $repo));
             try {

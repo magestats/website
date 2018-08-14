@@ -5,15 +5,30 @@ namespace App\Console\Components\Magento;
 use App\Statistics;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\ArrayInput;
 
 class GenerateStatistics extends Command
 {
     const ARGUMENT_YEAR = 'year';
-    protected $signature = 'magento:generate:statistics {year=current}';
+    const OPTION_ONLINE = 'online';
+
+    protected $signature = 'magento:generate:statistics {year=current} {--online}';
     protected $description = 'Generate Statistics';
 
-    public function handle(Statistics $statistics)
-    {
+    public function handle(
+        Statistics\PullRequests $pullRequests,
+        Statistics\Issues $issues,
+        Statistics\Contributors $contributors
+    ) {
+        $online = $this->input->getOption(self::OPTION_ONLINE);
+
+        if($online) {
+            $this->output->title('Fetch Pull Requests');
+            $this->fetchPullRequests();
+            $this->output->title('Fetch Issues');
+            $this->fetchIssues();
+        }
+
         $year = $this->input->getArgument(self::ARGUMENT_YEAR);
         $publicRepos = explode(',', getenv('MAGENTO_REPOS'));
 
@@ -22,16 +37,48 @@ class GenerateStatistics extends Command
         }
 
         $this->output->title(sprintf('From: %s to: %s', Carbon::createFromDate($year)->firstOfYear(), Carbon::createFromDate($year)->lastOfYear()));
-        $statistics->storePullRequests($year);
+
+        $this->output->text('Store contributors by year');
+        $contributors->storeContributors($year);
+        $this->output->text('Store pull requests by year');
+        $pullRequests->storePullRequests($year);
+        $this->output->text('Store issues by year');
+        $issues->storeIssues($year);
         foreach ($publicRepos as $repo) {
-            $statistics->storePullRequestsByRepository($repo, $year);
+            $this->output->text(sprintf('Store contributors for repo %s by year', $repo));
+            $contributors->storeIssuesByRepository($repo, $year);
+            $this->output->text(sprintf('Store pull requests for repo %s by year', $repo));
+            $pullRequests->storePullRequestsByRepository($repo, $year);
+            $this->output->text(sprintf('Store issues for repo %s by year', $repo));
+            $issues->storeIssuesByRepository($repo, $year);
         }
         $this->output->writeln(sprintf('Memory usage: %s', $this->convert(memory_get_usage(true))));
     }
 
     private function convert(int $size)
     {
-        $unit=array('b','kb','mb','gb','tb','pb');
-        return @round($size/pow(1024, ($i=floor(log($size, 1024)))), 2).' '.$unit[$i];
+        $unit = array('b', 'kb', 'mb', 'gb', 'tb', 'pb');
+        return @round($size / pow(1024, ($i = floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
     }
+
+    private function fetchPullRequests()
+    {
+        $command = $this->getApplication()->find('magento:fetch:pullrequests');
+        $arguments = array(
+            'command' => 'magento:fetch:pullrequests',
+        );
+        $input = new ArrayInput($arguments);
+        $command->run($input, $this->output);
+    }
+
+    private function fetchIssues()
+    {
+        $command = $this->getApplication()->find('magento:fetch:issues');
+        $arguments = array(
+            'command' => 'magento:fetch:issues',
+        );
+        $input = new ArrayInput($arguments);
+        $command->run($input, $this->output);
+    }
+
 }

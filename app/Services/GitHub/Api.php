@@ -42,7 +42,7 @@ class Api
      */
     public function fetchIssues(string $userName, string $repoName, bool $all = false): Collection
     {
-        return collect($this->fetchResults('issue', 'all', [$userName, $repoName, ['state' => 'all', 'per_page' => 100]], $all));
+        return collect($this->fetchResults('issue', 'all', [$userName, $repoName, ['state' => 'all', 'per_page' => 100, 'sort' => 'updated', 'direction' => 'desc']], $all));
     }
 
     /**
@@ -86,7 +86,7 @@ class Api
      */
     public function fetchPullRequests(string $userName, string $repoName, bool $all = false): Collection
     {
-        return collect($this->fetchResults('pull_request', 'all', [$userName, $repoName, ['state' => 'all', 'per_page' => 100]], $all));
+        return collect($this->fetchResults('pull_request', 'all', [$userName, $repoName, ['state' => 'all', 'per_page' => 100, 'sort' => 'updated', 'direction' => 'desc']], $all));
     }
 
     /**
