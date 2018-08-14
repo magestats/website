@@ -1,8 +1,8 @@
 <script>
-    import { Line } from 'vue-chartjs';
+    import { Bar, Line } from 'vue-chartjs';
 
     export default {
-        extends: Line,
+        extends: Bar,
         props: {
             'repo': String,
             'year': String
@@ -25,3 +25,4 @@
         }
     }
 </script>
+

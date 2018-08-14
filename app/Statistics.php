@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Statistics
 {
-    const DATASET_FILL = 'false';
+    const DATASET_FILL = false;
 
     /**
      * @var PullRequests
@@ -28,15 +28,15 @@ class Statistics
     /**
      * @var array
      */
-    private $createdColor = [235,227,170];
+    private $createdColor = [185,247,234];
     /**
      * @var array
      */
-    private $closedColor = [131,134,137];
+    private $closedColor = [188,183,184];
     /**
      * @var array
      */
-    private $mergedColor = [202,215,178];
+    private $mergedColor = [255,154,114];
 
     public function __construct(PullRequests $pullRequests)
     {
@@ -57,9 +57,9 @@ class Statistics
         $merged = $this->fetchMergedPullRequestsByYear($year);
 
         $datasets = [
+            $this->getDataset('Merged', $merged['total'], $this->mergedColor),
             $this->getDataset('Created', $created['total'], $this->createdColor),
             $this->getDataset('Closed', $closed['total'], $this->closedColor),
-            $this->getDataset('Merged', $merged['total'], $this->mergedColor),
         ];
 
         $data['datasets'] = $datasets;
@@ -81,9 +81,9 @@ class Statistics
         $merged = $this->fetchMergedPullRequestsByYear($year);
 
         $datasets = [
+            $this->getDataset('Merged', $merged[$repository], $this->mergedColor, 'line'),
             $this->getDataset('Created', $created[$repository], $this->createdColor),
             $this->getDataset('Closed', $closed[$repository], $this->closedColor),
-            $this->getDataset('Merged', $merged[$repository], $this->mergedColor),
         ];
 
         $data['datasets'] = $datasets;
@@ -203,17 +203,29 @@ class Statistics
         return array_values($data);
     }
 
-    private function getDataset(string $label, array $data, array $color)
+    /**
+     * @param string $label
+     * @param array $data
+     * @param array $color
+     * @param string $type
+     * @return array
+     */
+    private function getDataset(string $label, array $data, array $color, string $type = 'bar')
     {
+        $transparency = 0.8;
+        if(!self::DATASET_FILL && $type === 'line') {
+            $transparency = 1;
+        }
         return [
             'label' => $label,
             'data' => array_values($data),
             "fill" => self::DATASET_FILL,
-            'backgroundColor' => sprintf('rgba(%s, 0.8)', implode(',', $color)),
-            'borderColor' => sprintf('rgba(%s, 0.8)', implode(',', $color)),
-            'pointBackgroundColor' => sprintf('rgba(%s, 0.8)', implode(',', $color)),
-            'pointBorderColor' => sprintf('rgba(%s, 0.8)', implode(',', $color)),
-            'pointHoverBackgroundColor' => sprintf('rgba(%s, 0.8)', implode(',', $color)),
+            'backgroundColor' => sprintf('rgba(%s, %s)', implode(',', $color), $transparency),
+            'borderColor' => sprintf('rgba(%s, %s)', implode(',', $color), $transparency),
+            'pointBackgroundColor' => sprintf('rgba(%s, %s)', implode(',', $color), $transparency),
+            'pointBorderColor' => sprintf('rgba(%s, %s)', implode(',', $color), $transparency),
+            'pointHoverBackgroundColor' => sprintf('rgba(%s, %s)', implode(',', $color), $transparency),
+            'type' => $type
         ];
     }
 
