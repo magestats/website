@@ -9,7 +9,6 @@ Chart.defaults.global.defaultFontStyle = 300;
 Chart.plugins.register({
     afterDatasetsDraw: function(chart) {
         var ctx = chart.ctx;
-
         chart.data.datasets.forEach(function(dataset, i) {
             var meta = chart.getDatasetMeta(i);
             if (!meta.hidden) {
@@ -38,6 +37,19 @@ Chart.plugins.register({
                 });
             }
         });
+    }
+});
+Chart.plugins.register({
+    afterDraw: function(chart) {
+        var ctx = chart.ctx;
+        var fontSize = 12;
+        var fontStyle = 300;
+        var fontFamily = 'Heebo, sans-serif';
+        ctx.font = Chart.helpers.fontString(fontSize, fontStyle, fontFamily);
+        ctx.fillStyle = "rgba(50,50,50,0.4)";
+        ctx.textAlign = 'right';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText('© magestats.net', chart.chartArea.right-5, chart.chartArea.bottom);
     }
 });
 const app = new Vue({

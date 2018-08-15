@@ -16,7 +16,7 @@
                 this.renderChart({
                     labels: this.$root.response.labels,
                     datasets: this.$root.response.datasets,
-                }, {responsive: true, maintainAspectRatio: false, elements: {line: {tension: 0}}, title: {display: true, text: "Last generated: " + this.$root.response.generated.date.substr(0, 19) + " CET"}})
+                }, {responsive: true, maintainAspectRatio: false, elements: {line: {tension: 0}}, title: {display: true, text: this.$root.response.title},scales: {yAxes: [{ticks: {beginAtZero: true}}]}})
             },
 
             loadData: function (year, repo) {
