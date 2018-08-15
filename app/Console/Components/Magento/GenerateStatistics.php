@@ -21,8 +21,7 @@ class GenerateStatistics extends Command
         Statistics\PullRequests $pullRequests,
         Statistics\Issues $issues,
         Statistics\Contributors $contributors
-    )
-    {
+    ) {
         $online = $this->input->getOption(self::OPTION_ONLINE);
         $allMonths = $this->input->getOption(self::OPTION_ALL_MONTHS);
 
@@ -53,7 +52,7 @@ class GenerateStatistics extends Command
 
         foreach ($publicRepos as $repo) {
             $this->output->text(sprintf('Store contributors for repo %s by year', $repo));
-            $contributors->storeIssuesByRepository($repo, (int)$year);
+            $contributors->storeContributorsByRepository($repo, (int)$year);
 
             $this->output->text(sprintf('Store pull requests for repo %s by year', $repo));
             $pullRequests->storePullRequestsByRepository($repo, (int)$year);

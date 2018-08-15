@@ -31,11 +31,11 @@ class Contributors extends Statistics
      * @param string $repository
      * @param int $year
      */
-    public function storeIssuesByRepository(string $repository, int $year)
+    public function storeContributorsByRepository(string $repository, int $year)
     {
         $data = [
             'generator' => 'https://magestats.net/',
-            'title' => $year,
+            'title' => sprintf('%s - %s', $repository, $year),
             'generated' => Carbon::now(),
         ];
         $contributors = $this->fetchContributorsByYearAndRepo($year, $repository);
@@ -53,7 +53,7 @@ class Contributors extends Statistics
         $result = $this->pullRequests
             ->where('created', '>', Carbon::createFromDate($year)->firstOfYear())
             ->where('created', '<', Carbon::createFromDate($year)->lastOfYear())
-            ->orderBy('merged', 'ASC')
+            ->orderBy('author', 'ASC')
             ->get()
             ->toArray();
 
@@ -62,48 +62,35 @@ class Contributors extends Statistics
             $monthClosed = $this->getMonth($item['closed'] ?? '');
             $monthMerged = $this->getMonth($item['merged'] ?? '');
             $data[$item['author']]['avatar_url'] = $this->getAvatarUrl($item['author'], $item['meta']);
-            $data[$item['author']]['total']['created'][] = [
-                'number' => $item['number']
-            ];
-            $data[$item['author']]['month'][$monthCreated]['created'][] = [
-                'number' => $item['number']
-            ];
-            $data[$item['author']]['repos'][$item['repo']]['total'][] = [
-                'number' => $item['number']
-            ];
 
-            if (!$item['closed']) {
-                $data[$item['author']]['repos'][$item['repo']]['open'][] = [
-                    'number' => (int)$item['number']
-                ];
-                $data[$item['author']]['total']['open'][] = [
-                    'number' => $item['number']
-                ];
-                $data[$item['author']]['month'][$monthCreated]['open'][] = [
-                    'number' => $item['number']
-                ];
+            $data[$item['author']]['total']['created'] ?? $data[$item['author']]['total']['created'] = 0;
+            $data[$item['author']]['total']['created']++;
+
+            $data[$item['author']]['month'][$monthCreated]['created'] ?? $data[$item['author']]['month'][$monthCreated]['created'] = 0;
+            $data[$item['author']]['month'][$monthCreated]['created']++;
+
+            $data[$item['author']]['repos'][$item['repo']]['total'] ?? $data[$item['author']]['repos'][$item['repo']]['total'] = 0;
+            $data[$item['author']]['repos'][$item['repo']]['total']++;
+
+            if ($item['closed'] && $year === Carbon::createFromTimeString($item['closed'])->year) {
+                $data[$item['author']]['repos'][$item['repo']]['closed'] ?? $data[$item['author']]['repos'][$item['repo']]['closed'] = 0;
+                $data[$item['author']]['repos'][$item['repo']]['closed']++;
+
+                $data[$item['author']]['total']['closed'] ?? $data[$item['author']]['total']['closed'] = 0;
+                $data[$item['author']]['total']['closed']++;
+
+                $data[$item['author']]['month'][$monthClosed]['closed'] ?? $data[$item['author']]['month'][$monthClosed]['closed'] = 0;
+                $data[$item['author']]['month'][$monthClosed]['closed']++;
             }
-            if ($item['closed']) {
-                $data[$item['author']]['repos'][$item['repo']]['closed'][] = [
-                    'number' => (int)$item['number']
-                ];
-                $data[$item['author']]['total']['closed'][] = [
-                    'number' => $item['number']
-                ];
-                $data[$item['author']]['month'][$monthClosed]['closed'][] = [
-                    'number' => $item['number']
-                ];
-            }
-            if ($item['merged']) {
-                $data[$item['author']]['repos'][$item['repo']]['merged'][] = [
-                    'number' => (int)$item['number']
-                ];
-                $data[$item['author']]['total']['merged'][] = [
-                    'number' => $item['number']
-                ];
-                $data[$item['author']]['month'][$monthMerged]['merged'][] = [
-                    'number' => $item['number']
-                ];
+            if ($item['merged'] && $year === Carbon::createFromTimeString($item['merged'])->year) {
+                $data[$item['author']]['repos'][$item['repo']]['merged'] ?? $data[$item['author']]['repos'][$item['repo']]['merged'] = 0;
+                $data[$item['author']]['repos'][$item['repo']]['merged']++;
+
+                $data[$item['author']]['total']['merged'] ?? $data[$item['author']]['total']['merged'] = 0;
+                $data[$item['author']]['total']['merged']++;
+
+                $data[$item['author']]['month'][$monthMerged]['merged'] ?? $data[$item['author']]['month'][$monthMerged]['merged'] = 0;
+                $data[$item['author']]['month'][$monthMerged]['merged']++;
             }
         }
         return $data;
@@ -116,7 +103,7 @@ class Contributors extends Statistics
             ->where('created', '>', Carbon::createFromDate($year)->firstOfYear())
             ->where('created', '<', Carbon::createFromDate($year)->lastOfYear())
             ->where('repo', '=', $repo)
-            ->orderBy('merged', 'ASC')
+            ->orderBy('author', 'ASC')
             ->get()
             ->toArray();
 
@@ -125,36 +112,26 @@ class Contributors extends Statistics
             $monthClosed = $this->getMonth($item['closed'] ?? '');
             $monthMerged = $this->getMonth($item['merged'] ?? '');
             $data[$item['author']]['avatar_url'] = $this->getAvatarUrl($item['author'], $item['meta']);
-            $data[$item['author']]['total']['created'][] = [
-                'number' => $item['number']
-            ];
-            $data[$item['author']]['month'][$monthCreated]['created'][] = [
-                'number' => $item['number']
-            ];
 
-            if (!$item['closed']) {
-                $data[$item['author']]['total']['open'][] = [
-                    'number' => $item['number']
-                ];
-                $data[$item['author']]['month'][$monthCreated]['open'][] = [
-                    'number' => $item['number']
-                ];
+            $data[$item['author']]['total']['created'] ?? $data[$item['author']]['total']['created'] = 0;
+            $data[$item['author']]['total']['created']++;
+
+            $data[$item['author']]['month'][$monthCreated]['created'] ?? $data[$item['author']]['month'][$monthCreated]['created'] = 0;
+            $data[$item['author']]['month'][$monthCreated]['created']++;
+
+            if ($item['closed'] && $year === Carbon::createFromTimeString($item['closed'])->year) {
+                $data[$item['author']]['total']['closed'] ?? $data[$item['author']]['total']['closed'] = 0;
+                $data[$item['author']]['total']['closed']++;
+
+                $data[$item['author']]['month'][$monthClosed]['closed'] ?? $data[$item['author']]['month'][$monthClosed]['closed'] = 0;
+                $data[$item['author']]['month'][$monthClosed]['closed']++;
             }
-            if ($item['closed']) {
-                $data[$item['author']]['total']['closed'][] = [
-                    'number' => $item['number']
-                ];
-                $data[$item['author']]['month'][$monthClosed]['closed'][] = [
-                    'number' => $item['number']
-                ];
-            }
-            if ($item['merged']) {
-                $data[$item['author']]['total']['merged'][] = [
-                    'number' => $item['number']
-                ];
-                $data[$item['author']]['month'][$monthMerged]['merged'][] = [
-                    'number' => $item['number']
-                ];
+            if ($item['merged'] && $year === Carbon::createFromTimeString($item['merged'])->year) {
+                $data[$item['author']]['total']['merged'] ?? $data[$item['author']]['total']['merged'] = 0;
+                $data[$item['author']]['total']['merged']++;
+
+                $data[$item['author']]['month'][$monthMerged]['merged'] ?? $data[$item['author']]['month'][$monthMerged]['merged'] = 0;
+                $data[$item['author']]['month'][$monthMerged]['merged']++;
             }
         }
         return $data;
@@ -174,7 +151,7 @@ class Contributors extends Statistics
     private function getMonth(string $time): string
     {
         $timestamp = strtotime($time);
-        if($timestamp) {
+        if ($timestamp) {
             return date('m', $timestamp);
         }
         return '';
