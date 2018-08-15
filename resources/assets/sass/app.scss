@@ -7,6 +7,9 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+body, html {
+  height: 100%;
+}
 
 // Headings
 h1,h2,h3,h4,h5,h6
@@ -136,16 +139,49 @@ h2 {
 // Fullpage
 
 .fullpage {
+  height: 100%;
   .section {
-    padding: 15% 5%;
+    height: 100%;
+    padding: 10% 5%;
     h2 {
-      font-size: 3em;
-      text-align: center;
-      font-weight: bold;
+      font-size: 1.3em;
       line-height: 2em;
     }
-    &.orange {
-      background: orange;
+    &.first {
+      margin-top: 50px;
+    }
+    &.second {
+      background: #eee;
+    }
+    .small {
+      font-weight: 300;
+      text-align: right;
+    }
+  }
+}
+
+@media (min-width: $grid-float-breakpoint) {
+  .fullpage {
+    height: 100%;
+    .section {
+      height: 100%;
+      padding: 10% 5%;
+      h2 {
+        text-align: center;
+        font-size: 2em;
+        line-height: 2em;
+        text-transform: uppercase;
+      }
+      &.first {
+        margin-top: 50px;
+      }
+      &.second {
+        background: #eee;
+      }
+      .small {
+        font-weight: 300;
+        text-align: right;
+      }
     }
   }
 }
