@@ -42,20 +42,24 @@ class Statistics
     }
 
     /**
-     * @param int $start
-     * @param int $end
+     * @param int $year
      * @return array
      */
-    protected function getRangeArray(int $start, int $end): array
+    protected function getRangeArray(int $year): array
     {
         $data = [];
         $publicRepos = explode(',', getenv('MAGENTO_REPOS'));
 
-        foreach (range($start, $end) as $item) {
+        foreach (range(1, 12) as $month) {
+            $days = Carbon::create($year, $month)->daysInMonth;
+
             foreach ($publicRepos as $repo) {
-                $data[$repo][$item] = 0;
+                $data[$repo]['total'][$month] = 0;
+                foreach (range(1, $days) as $day) {
+                    $data[$repo]['months'][$month][$day] = 0;
+                }
             }
-            $data['total'][$item] = 0;
+            $data['total'][$month] = 0;
         }
         return $data;
     }

@@ -32,6 +32,7 @@ $navbar-inverse-link-active-color:          $navbar-inverse-link-color;
 $navbar-inverse-link-hover-bg:              transparent;
 $navbar-inverse-link-active-color:          $navbar-inverse-link-color;
 $navbar-inverse-link-active-bg:             lighten($navbar-inverse-bg, 10%);
+$navbar-collapse-max-height:                auto;
 // Buttons
 $btn-default-color: $text-color;
 

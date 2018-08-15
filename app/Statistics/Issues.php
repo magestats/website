@@ -49,7 +49,7 @@ class Issues extends Statistics
     {
         $data = [
             'generator' => 'https://magestats.net/',
-            'title' => $repository,
+            'title' => sprintf('%s - %s', $repository, $year),
             'generated' => Carbon::now(),
             'labels' => $this->getMonthRange($year),
         ];
@@ -57,12 +57,36 @@ class Issues extends Statistics
         $closed = $this->fetchClosedIssuesByYear($year);
 
         $datasets = [
-            $this->getDataset('Created', $created[$repository], $this->createdColor),
-            $this->getDataset('Closed', $closed[$repository], $this->closedColor),
+            $this->getDataset('Created', $created[$repository]['total'], $this->createdColor),
+            $this->getDataset('Closed', $closed[$repository]['total'], $this->closedColor),
         ];
 
         $data['datasets'] = $datasets;
         $this->storeDataByYear(sprintf('%s/%s', $repository, self::FILENAME), $year, $data);
+    }
+
+    /**
+     * @param string $repository
+     * @param int $year
+     */
+    public function storeIssuesByRepositoryAndMonth(string $repository, int $month, int $year)
+    {
+        $data = [
+            'generator' => 'https://magestats.net/',
+            'title' => sprintf('%s - %s %s', $repository, Carbon::create($year, $month)->englishMonth, $year),
+            'generated' => Carbon::now(),
+            'labels' => range(1, Carbon::create($year, $month)->daysInMonth),
+        ];
+        $created = $this->fetchCreatedIssuesByYear($year);
+        $closed = $this->fetchClosedIssuesByYear($year);
+
+        $datasets = [
+            $this->getDataset('Created', $created[$repository]['months'][$month], $this->createdColor),
+            $this->getDataset('Closed', $closed[$repository]['months'][$month], $this->closedColor),
+        ];
+
+        $data['datasets'] = $datasets;
+        $this->storeDataByYear(sprintf('%s/%s/%d', $repository, self::FILENAME, $month), $year, $data);
     }
 
     /**
@@ -96,10 +120,7 @@ class Issues extends Statistics
      */
     private function fetchIssuesByStatusAndYear(string $status, int $year): array
     {
-        $data = $this->getRangeArray(1, 12);
-        if (Carbon::create($year)->isCurrentYear()) {
-            $data = $this->getRangeArray(1, date('n'));
-        }
+        $data = $this->getRangeArray($year);
         $result = $this->issues
             ->where($status, '>', Carbon::createFromDate($year)->firstOfYear())
             ->where($status, '<', Carbon::createFromDate($year)->lastOfYear())
@@ -109,7 +130,9 @@ class Issues extends Statistics
 
         foreach ($result as $item) {
             $month = Carbon::createFromTimestamp(strtotime($item[$status]))->month;
-            $data[$item['repo']][$month]++;
+            $day = Carbon::createFromTimestamp(strtotime($item[$status]))->day;
+            $data[$item['repo']]['total'][$month]++;
+            $data[$item['repo']]['months'][$month][$day]++;
             $data['total'][$month]++;
         }
         return $data;

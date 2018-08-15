@@ -161,9 +161,9 @@ class Contributors extends Statistics
 
     private function getAvatarUrl(string $author, string $meta)
     {
-        if(!isset($this->authors[$author])) {
+        if (!isset($this->authors[$author])) {
             $data = json_decode($meta, true);
-            if(isset($data['user']['avatar_url'])) {
+            if (isset($data['user']['avatar_url'])) {
                 $this->authors[$author] = $data['user']['avatar_url'];
             }
         }

@@ -62,13 +62,34 @@ class PullRequests extends Statistics
         $merged = $this->fetchMergedPullRequestsByYear($year);
 
         $datasets = [
-            $this->getDataset('Merged', $merged[$repository], $this->mergedColor, 'line'),
-            $this->getDataset('Created', $created[$repository], $this->createdColor),
-            $this->getDataset('Closed', $closed[$repository], $this->closedColor),
+            $this->getDataset('Merged', $merged[$repository]['total'], $this->mergedColor, 'line'),
+            $this->getDataset('Created', $created[$repository]['total'], $this->createdColor),
+            $this->getDataset('Closed', $closed[$repository]['total'], $this->closedColor),
         ];
 
         $data['datasets'] = $datasets;
         $this->storeDataByYear(sprintf('%s/%s', $repository, self::FILENAME), $year, $data);
+    }
+
+    public function storePullRequestsByRepositoryAndMonth(string $repository, int $month, int $year)
+    {
+        $data = [
+            'title' => sprintf('%s - %s %s', $repository, Carbon::create($year, $month)->englishMonth, $year),
+            'labels' => range(1, Carbon::create($year, $month)->daysInMonth),
+            'generated' => Carbon::now(),
+        ];
+        $created = $this->fetchCreatedPullRequestsByYear($year);
+        $closed = $this->fetchClosedPullRequestsByYear($year);
+        $merged = $this->fetchMergedPullRequestsByYear($year);
+
+        $datasets = [
+            $this->getDataset('Merged', $merged[$repository]['months'][$month], $this->mergedColor, 'line'),
+            $this->getDataset('Created', $created[$repository]['months'][$month], $this->createdColor),
+            $this->getDataset('Closed', $closed[$repository]['months'][$month], $this->closedColor),
+        ];
+
+        $data['datasets'] = $datasets;
+        $this->storeDataByYear(sprintf('%s/%s/%d', $repository, self::FILENAME, $month), $year, $data);
     }
 
     /**
@@ -114,10 +135,7 @@ class PullRequests extends Statistics
      */
     private function fetchPullRequestsByStatusAndYear(string $status, int $year): array
     {
-        $data = $this->getRangeArray(1, 12);
-        if (Carbon::create($year)->isCurrentYear()) {
-            $data = $this->getRangeArray(1, date('n'));
-        }
+        $data = $this->getRangeArray($year);
         $result = $this->pullRequests
             ->where($status, '>', Carbon::createFromDate($year)->firstOfYear())
             ->where($status, '<', Carbon::createFromDate($year)->lastOfYear())
@@ -127,7 +145,9 @@ class PullRequests extends Statistics
 
         foreach ($result as $item) {
             $month = Carbon::createFromTimestamp(strtotime($item[$status]))->month;
-            $data[$item['repo']][$month]++;
+            $day = Carbon::createFromTimestamp(strtotime($item[$status]))->day;
+            $data[$item['repo']]['total'][$month]++;
+            $data[$item['repo']]['months'][$month][$day]++;
             $data['total'][$month]++;
         }
         return $data;

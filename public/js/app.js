@@ -19673,7 +19673,7 @@ module.exports = __webpack_require__(226);
 
 __webpack_require__(147);
 window.Vue = __webpack_require__(170);
-Vue.component('repository-chart', __webpack_require__(241));
+Vue.component('repository-chart', __webpack_require__(173));
 Chart.defaults.global.animation.duration = 0;
 Chart.defaults.global.hover.animationDuration = 0;
 Chart.defaults.global.responsiveAnimationDuration = 0;
@@ -61778,7 +61778,53 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(13)))
 
 /***/ }),
-/* 173 */,
+/* 173 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(174)
+/* script */
+var __vue_script__ = __webpack_require__(175)
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/repository-chart.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5fdecf9c", Component.options)
+  } else {
+    hotAPI.reload("data-v-5fdecf9c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
 /* 174 */
 /***/ (function(module, exports) {
 
@@ -61888,7 +61934,40 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 175 */,
+/* 175 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(176);
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Bar */],
+    props: {
+        'repo': String,
+        'year': String
+    },
+    created: function created() {
+        this.loadData(this.year, this.repo);
+    },
+
+    methods: {
+        renderLineChart: function renderLineChart() {
+            this.renderChart({
+                labels: this.$root.response.labels,
+                datasets: this.$root.response.datasets
+            }, { responsive: true, maintainAspectRatio: false, elements: { line: { tension: 0 } }, title: { display: true, text: "Last generated: " + this.$root.response.generated.date.substr(0, 19) + " CET" } });
+        },
+
+        loadData: function loadData(year, repo) {
+            this.$root.loadFromStorage('/' + year + '/' + repo + '.json', this.renderLineChart);
+        }
+    }
+});
+
+/***/ }),
 /* 176 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -74745,101 +74824,6 @@ module.exports = {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 227 */,
-/* 228 */,
-/* 229 */,
-/* 230 */,
-/* 231 */,
-/* 232 */,
-/* 233 */,
-/* 234 */,
-/* 235 */,
-/* 236 */,
-/* 237 */,
-/* 238 */,
-/* 239 */,
-/* 240 */,
-/* 241 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(174)
-/* script */
-var __vue_script__ = __webpack_require__(242)
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/repository-chart.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5fdecf9c", Component.options)
-  } else {
-    hotAPI.reload("data-v-5fdecf9c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 242 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__ = __webpack_require__(176);
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    extends: __WEBPACK_IMPORTED_MODULE_0_vue_chartjs__["a" /* Bar */],
-    props: {
-        'repo': String,
-        'year': String
-    },
-    created: function created() {
-        this.loadData(this.year, this.repo);
-    },
-
-    methods: {
-        renderLineChart: function renderLineChart() {
-            this.renderChart({
-                labels: this.$root.response.labels,
-                datasets: this.$root.response.datasets
-            }, { responsive: true, maintainAspectRatio: false, elements: { line: { tension: 0 } }, title: { display: true, text: "Last generated: " + this.$root.response.generated.date.substr(0, 19) + " CET" } });
-        },
-
-        loadData: function loadData(year, repo) {
-            this.$root.loadFromStorage('/' + year + '/' + repo + '.json', this.renderLineChart);
-        }
-    }
-});
 
 /***/ })
 /******/ ]);
