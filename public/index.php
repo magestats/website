@@ -57,7 +57,7 @@ $response = $kernel->handle(
 
 $useSecureRequests = env('REQUEST_SECURE');
 if($useSecureRequests && !$request->secure()) {
-    header(sprintf('Location: %s%s', env('APP_URL'),$request->path()));
+    header(sprintf('Location: %s/%s', env('APP_URL'),ltrim($request->path(), '/')));
 }
 $response->send();
 
