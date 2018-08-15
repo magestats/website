@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Console\Components\Magento;
 
@@ -60,7 +61,7 @@ class FetchIssues extends Command
      * @param string $repository
      * @return array
      */
-    private function fetchIssues(Api $api, string $repository, bool $all) : array
+    private function fetchIssues(Api $api, string $repository, bool $all): array
     {
         list($user, $repo) = explode('/', $repository);
         $result = $api->fetchIssues($user, $repo, $all)->toArray();

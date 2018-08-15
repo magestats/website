@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Console\Components\Magento;
 
@@ -20,7 +21,8 @@ class GenerateStatistics extends Command
         Statistics\PullRequests $pullRequests,
         Statistics\Issues $issues,
         Statistics\Contributors $contributors
-    ) {
+    )
+    {
         $online = $this->input->getOption(self::OPTION_ONLINE);
         $allMonths = $this->input->getOption(self::OPTION_ALL_MONTHS);
 
@@ -41,38 +43,38 @@ class GenerateStatistics extends Command
         $this->output->title(sprintf('From: %s to: %s', Carbon::createFromDate($year)->firstOfYear(), Carbon::createFromDate($year)->lastOfYear()));
 
         $this->output->text('Store contributors by year');
-        $contributors->storeContributors($year);
+        $contributors->storeContributors((int)$year);
 
         $this->output->text('Store pull requests by year');
-        $pullRequests->storePullRequests($year);
+        $pullRequests->storePullRequests((int)$year);
 
         $this->output->text('Store issues by year');
-        $issues->storeIssues($year);
+        $issues->storeIssues((int)$year);
 
         foreach ($publicRepos as $repo) {
             $this->output->text(sprintf('Store contributors for repo %s by year', $repo));
-            $contributors->storeIssuesByRepository($repo, $year);
+            $contributors->storeIssuesByRepository($repo, (int)$year);
 
             $this->output->text(sprintf('Store pull requests for repo %s by year', $repo));
-            $pullRequests->storePullRequestsByRepository($repo, $year);
+            $pullRequests->storePullRequestsByRepository($repo, (int)$year);
 
             $this->output->text(sprintf('Store issues for repo %s by year', $repo));
-            $issues->storeIssuesByRepository($repo, $year);
+            $issues->storeIssuesByRepository($repo, (int)$year);
 
             if ($allMonths) {
                 foreach (range(1, 12) as $month) {
                     $this->output->text(sprintf('Store pull requests for repo %s by year and month %s', $repo, $month));
-                    $pullRequests->storePullRequestsByRepositoryAndMonth($repo, (int) $month, $year);
+                    $pullRequests->storePullRequestsByRepositoryAndMonth($repo, (int)$month, (int)$year);
 
                     $this->output->text(sprintf('Store issues for repo %s by year and month %s', $repo, $month));
-                    $issues->storeIssuesByRepositoryAndMonth($repo, (int)  $month, $year);
+                    $issues->storeIssuesByRepositoryAndMonth($repo, (int)$month, (int)$year);
                 }
             } else {
                 $this->output->text(sprintf('Store pull requests for repo %s by year and month', $repo));
-                $pullRequests->storePullRequestsByRepositoryAndMonth($repo, (int) date('n'), $year);
+                $pullRequests->storePullRequestsByRepositoryAndMonth($repo, (int)date('n'), (int)$year);
 
                 $this->output->text(sprintf('Store issues for repo %s by year and month', $repo));
-                $issues->storeIssuesByRepositoryAndMonth($repo, (int) date('n'), $year);
+                $issues->storeIssuesByRepositoryAndMonth($repo, (int)date('n'), (int)$year);
             }
         }
         $this->output->writeln(sprintf('Memory usage: %s', $this->convert(memory_get_usage(true))));

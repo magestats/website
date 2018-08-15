@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Statistics;
 
@@ -57,9 +58,9 @@ class Contributors extends Statistics
             ->toArray();
 
         foreach ($result as $item) {
-            $monthCreated = date('m', strtotime($item['created']));
-            $monthClosed = date('m', strtotime($item['closed']));
-            $monthMerged = date('m', strtotime($item['merged']));
+            $monthCreated = $this->getMonth($item['created'] ?? '');
+            $monthClosed = $this->getMonth($item['closed'] ?? '');
+            $monthMerged = $this->getMonth($item['merged'] ?? '');
             $data[$item['author']]['avatar_url'] = $this->getAvatarUrl($item['author'], $item['meta']);
             $data[$item['author']]['total']['created'][] = [
                 'number' => $item['number']
@@ -82,7 +83,7 @@ class Contributors extends Statistics
                     'number' => $item['number']
                 ];
             }
-            if ($item['closed'] && $year === date('Y', $monthClosed)) {
+            if ($item['closed']) {
                 $data[$item['author']]['repos'][$item['repo']]['closed'][] = [
                     'number' => (int)$item['number']
                 ];
@@ -93,7 +94,7 @@ class Contributors extends Statistics
                     'number' => $item['number']
                 ];
             }
-            if ($item['merged'] && $year === date('Y', $monthMerged)) {
+            if ($item['merged']) {
                 $data[$item['author']]['repos'][$item['repo']]['merged'][] = [
                     'number' => (int)$item['number']
                 ];
@@ -120,9 +121,9 @@ class Contributors extends Statistics
             ->toArray();
 
         foreach ($result as $item) {
-            $monthCreated = date('m', strtotime($item['created']));
-            $monthClosed = date('m', strtotime($item['closed']));
-            $monthMerged = date('m', strtotime($item['merged']));
+            $monthCreated = $this->getMonth($item['created'] ?? '');
+            $monthClosed = $this->getMonth($item['closed'] ?? '');
+            $monthMerged = $this->getMonth($item['merged'] ?? '');
             $data[$item['author']]['avatar_url'] = $this->getAvatarUrl($item['author'], $item['meta']);
             $data[$item['author']]['total']['created'][] = [
                 'number' => $item['number']
@@ -139,7 +140,7 @@ class Contributors extends Statistics
                     'number' => $item['number']
                 ];
             }
-            if ($item['closed'] && $year === date('Y', $monthMerged)) {
+            if ($item['closed']) {
                 $data[$item['author']]['total']['closed'][] = [
                     'number' => $item['number']
                 ];
@@ -147,7 +148,7 @@ class Contributors extends Statistics
                     'number' => $item['number']
                 ];
             }
-            if ($item['merged'] && $year === date('Y', $monthMerged)) {
+            if ($item['merged']) {
                 $data[$item['author']]['total']['merged'][] = [
                     'number' => $item['number']
                 ];
@@ -168,5 +169,14 @@ class Contributors extends Statistics
             }
         }
         return $this->authors[$author];
+    }
+
+    private function getMonth(string $time): string
+    {
+        $timestamp = strtotime($time);
+        if($timestamp) {
+            return date('m', $timestamp);
+        }
+        return '';
     }
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App;
 
@@ -126,7 +127,7 @@ class Statistics
      */
     protected function storeDataByYear(string $filename, int $year, array $data)
     {
-        $json = json_encode($data, true);
+        $json = json_encode($data);
         Storage::put(sprintf('public/%d/%s.json', $year, $filename), $json, 'public');
     }
 }
