@@ -55,6 +55,10 @@ $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );
 
+$useSecureRequests = env('REQUEST_SECURE');
+if($useSecureRequests && !$request->secure()) {
+    header(sprintf('Location: %s%s', env('APP_URL'),$request->path()));
+}
 $response->send();
 
 $kernel->terminate($request, $response);

@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://opensourcestatistics.com'),
+    'url' => env('APP_URL', 'https://magestats.net'),
 
     /*
     |--------------------------------------------------------------------------
