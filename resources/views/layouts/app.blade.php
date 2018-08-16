@@ -14,6 +14,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1020866-28"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-1020866-28');
+    </script>
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -60,6 +69,7 @@
     </div>
 </nav>
 @yield('content')
+<a href="#top" id="back-to-top" class="btn btn-default">Top</a>
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
 </body>

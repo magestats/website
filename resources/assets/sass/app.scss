@@ -91,6 +91,21 @@ h2 {
   margin: 15px 0;
 }
 
+#back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 99;
+  outline: none;
+  background-color: $status-merged-color;
+  color: #fff;
+  border: 0;
+  font-size: 0.8em;
+  font-weight: 300;
+  padding: 10px 10px;
+}
+
 // Animations
 @keyframes  fadein {
   from {
