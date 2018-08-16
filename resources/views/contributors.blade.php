@@ -3,9 +3,30 @@
 @section('content')
     <div class="container content" id="app">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-8">
                 <h1>{{ $title }}</h1>
-                <contributors year="2018" repo="/contributors"></contributors>
+            </div>
+            <div class="col-xs-4">
+                <div class="selector">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">{{ $active_year }} <span
+                                    class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            @foreach(range(date('Y'),2011) as $year)
+                                <li{{ Request::is('*/' . $year) ? ' class=active' : null }}><a
+                                            href="{{route('contributors', [$year])}}">{{ $year }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <contributors year="{{ $active_year }}" repo="/contributors"></contributors>
             </div>
         </div>
     </div>
