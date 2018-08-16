@@ -1,10 +1,10 @@
 require('./bootstrap');
-import VueClazyLoad from 'vue-clazy-load';
+var VueLazyload = require('vue-lazyload');
 
 window.Vue = require('vue');
 Vue.component('repository-chart', require('./components/repository-chart.vue'));
 Vue.component('contributors', require('./components/contributors.vue'));
-Vue.use(VueClazyLoad);
+Vue.use(VueLazyload);
 
 Chart.defaults.global.animation.duration = 0;
 Chart.defaults.global.hover.animationDuration = 0;

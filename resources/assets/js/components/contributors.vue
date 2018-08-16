@@ -28,19 +28,14 @@
         <div class="row contributors">
             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"  v-for="(values, contributor) of contributors">
             <div class="panel panel-default">
-                <div class="panel-body">
-                    <clazy-load :src="values.avatar_url">
-                        <div slot="placeholder">
-                            <img src="/images/contributor-placeholder.png" alt="placeholder">
-                        </div>
-                    <a :href="'https://github.com/' + contributor"><img :src="values.avatar_url"/></a>
+                <div class="panel-body" v-lazy-container="{ selector: 'img', error: '/images/magestats-icon-colord.png', loading: '/images/magestats-icon-colord.png' }">
+                    <a :href="'https://github.com/' + contributor"><img :data-src="values.avatar_url"/></a>
                     <p class="center"><a :href="'https://github.com/' + contributor">{{ contributor }}</a></p>
                     <ul>
                         <li>Merged: <span class="badge merged right">{{ values.merged }}</span></li>
                         <li>Created: <span class="badge created right">{{ values.created }}</span></li>
                         <li>Closed: <span class="badge closed right">{{ values.closed }}</span></li>
                     </ul>
-                    </clazy-load>
                 </div>
             </div>
             </div>
