@@ -26,7 +26,7 @@
 </script>
 <template>
         <div class="row contributors">
-            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"  v-for="(values, contributor) of contributors">
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"  v-for="(values, contributor) of contributors">
             <div class="panel panel-default">
                 <div class="panel-body" v-lazy-container="{ selector: 'img', error: '/images/magestats-icon-colord.png', loading: '/images/magestats-icon-colord.png' }">
                     <a :href="'https://github.com/' + contributor"><img :data-src="values.avatar_url"/></a>
