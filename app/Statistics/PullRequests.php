@@ -28,6 +28,7 @@ class PullRequests extends Statistics
      */
     public function storePullRequests(int $year)
     {
+        $this->reset();
         $data = [
             'title' => $year,
             'labels' => $this->getMonthRange($year),
@@ -43,6 +44,11 @@ class PullRequests extends Statistics
             $this->getDataset('Closed', $closed['total'], $this->closedColor),
         ];
 
+        $data['total'] = [
+            'merged' => $this->countTotals($merged['total']),
+            'created' => $this->countTotals($created['total']),
+            'closed' => $this->countTotals($closed['total'])
+        ];
         $data['datasets'] = $datasets;
         $this->storeDataByYear(self::FILENAME, $year, $data);
     }
@@ -53,6 +59,7 @@ class PullRequests extends Statistics
      */
     public function storePullRequestsByRepository(string $repository, int $year)
     {
+        $this->reset();
         $data = [
             'title' => sprintf('%s - %s', $repository, $year),
             'labels' => $this->getMonthRange($year),
@@ -68,12 +75,18 @@ class PullRequests extends Statistics
             $this->getDataset('Closed', $closed[$repository]['total'], $this->closedColor),
         ];
 
+        $data['total'] = [
+            'merged' => $this->countTotals($merged[$repository]['total']),
+            'created' => $this->countTotals($created[$repository]['total']),
+            'closed' => $this->countTotals($closed[$repository]['total'])
+        ];
         $data['datasets'] = $datasets;
         $this->storeDataByYear(sprintf('%s/%s', $repository, self::FILENAME), $year, $data);
     }
 
     public function storePullRequestsByRepositoryAndMonth(string $repository, int $month, int $year)
     {
+        $this->reset();
         $data = [
             'title' => sprintf('%s - %s %s', $repository, Carbon::create($year, $month)->englishMonth, $year),
             'labels' => range(1, Carbon::create($year, $month)->daysInMonth),
@@ -89,6 +102,11 @@ class PullRequests extends Statistics
             $this->getDataset('Closed', $closed[$repository]['months'][$month], $this->closedColor),
         ];
 
+        $data['total'] = [
+            'merged' => $this->countTotals($merged[$repository]['months'][$month]),
+            'created' => $this->countTotals($created[$repository]['months'][$month]),
+            'closed' => $this->countTotals($closed[$repository]['months'][$month])
+        ];
         $data['datasets'] = $datasets;
         $this->storeDataByYear(sprintf('%s/%s/%d', $repository, self::FILENAME, $month), $year, $data);
     }

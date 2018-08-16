@@ -36,9 +36,9 @@
                     <a :href="'https://github.com/' + contributor"><img :src="values.avatar_url"/></a>
                     <p class="center"><a :href="'https://github.com/' + contributor">{{ contributor }}</a></p>
                     <ul>
-                        <li>Merged: <span class="badge merged right" v-if="values.total.merged">{{ values.total.merged }}</span><span class="badge merged right" v-else>0</span></li>
-                        <li>Created: <span class="badge created right" v-if="values.total.created">{{ values.total.created }}</span><span class="badge right" v-else>0</span></li>
-                        <li>Closed: <span class="badge closed right" v-if="values.total.closed">{{ values.total.closed }}</span><span class="badge right" v-else>0</span></li>
+                        <li>Merged: <span class="badge merged right">{{ values.merged }}</span></li>
+                        <li>Created: <span class="badge created right">{{ values.created }}</span></li>
+                        <li>Closed: <span class="badge closed right">{{ values.closed }}</span></li>
                     </ul>
                     </clazy-load>
                 </div>

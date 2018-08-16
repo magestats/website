@@ -46,6 +46,7 @@ Chart.plugins.register({
 });
 Chart.plugins.register({
     afterDraw: function(chart) {
+        console.log(chart);
         var ctx = chart.ctx;
         var fontSize = 12;
         var fontStyle = 300;

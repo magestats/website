@@ -22,7 +22,6 @@ class Statistics
      * @var Issues
      */
     protected $issues;
-
     /**
      * @var array
      */
@@ -35,6 +34,10 @@ class Statistics
      * @var array
      */
     protected $mergedColor = [255, 154, 114];
+    /**
+     * @var bool
+     */
+    protected $hasItems = false;
 
     public function __construct(PullRequests $pullRequests, Issues $issues)
     {
@@ -129,5 +132,23 @@ class Statistics
     {
         $json = json_encode($data);
         Storage::put(sprintf('public/%d/%s.json', $year, $filename), $json, 'public');
+    }
+
+
+    protected function countTotals(array $data): int
+    {
+        $total = 0;
+        foreach ($data as $value) {
+            $total += (int)$value;
+        }
+        if ($total > 0) {
+            $this->hasItems = true;
+        }
+        return $total;
+    }
+
+    protected function reset()
+    {
+        $this->hasItems = false;
     }
 }

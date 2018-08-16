@@ -62,6 +62,9 @@ class GenerateStatistics extends Command
 
             if ($allMonths) {
                 foreach (range(1, 12) as $month) {
+                    $this->output->text(sprintf('Store contributors for repo %s by year and month %s', $repo, $month));
+                    $contributors->storeContributorsByRepositoryAndMonth($repo, (int)$month, (int)$year);
+
                     $this->output->text(sprintf('Store pull requests for repo %s by year and month %s', $repo, $month));
                     $pullRequests->storePullRequestsByRepositoryAndMonth($repo, (int)$month, (int)$year);
 
@@ -69,6 +72,9 @@ class GenerateStatistics extends Command
                     $issues->storeIssuesByRepositoryAndMonth($repo, (int)$month, (int)$year);
                 }
             } else {
+                $this->output->text(sprintf('Store contributors for repo %s by year and month', $repo));
+                $contributors->storeContributorsByRepositoryAndMonth($repo, (int)date('n'), (int)$year);
+
                 $this->output->text(sprintf('Store pull requests for repo %s by year and month', $repo));
                 $pullRequests->storePullRequestsByRepositoryAndMonth($repo, (int)date('n'), (int)$year);
 
