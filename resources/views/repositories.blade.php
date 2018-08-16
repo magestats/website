@@ -26,11 +26,11 @@
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                     aria-haspopup="true"
                                     aria-expanded="false">@if(Request::is('*/' . $active_year . '/' . $active_month)){{ $active_english_month }}@else
-                                    Whole year @endif <span
+                                    Entire year @endif <span
                                         class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="{{route('repositories', [$repo, $active_year])}}">Whole year</a></li>
+                                <li><a href="{{route('repositories', [$repo, $active_year])}}">Entire year</a></li>
                                 <li role="separator" class="divider"></li>
                                 @foreach($month_selector as $month => $value)
                                     <li{{ Request::is('*/' . $active_year . '/' . $month) ? ' class=active' : null }}><a
@@ -63,6 +63,16 @@
                     <repository-chart year="{{ $active_year }}" repo="{{ $repo }}/issues/{{ (int) $active_month }}"></repository-chart>
                 @else
                     <repository-chart year="{{ $active_year }}" repo="{{ $repo }}/issues"></repository-chart>
+                @endif
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Contributors</h2>
+                @if(Request::is('*/' . $active_year . '/' . $active_month))
+                    <contributors year="{{ $active_year }}" repo="{{ $repo }}/contributors/{{ (int) $active_month }}"></contributors>
+                @else
+                    <contributors year="{{ $active_year }}" repo="{{ $repo }}/contributors"></contributors>
                 @endif
             </div>
         </div>

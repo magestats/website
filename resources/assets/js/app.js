@@ -1,6 +1,11 @@
 require('./bootstrap');
+import VueClazyLoad from 'vue-clazy-load';
+
 window.Vue = require('vue');
 Vue.component('repository-chart', require('./components/repository-chart.vue'));
+Vue.component('contributors', require('./components/contributors.vue'));
+Vue.use(VueClazyLoad);
+
 Chart.defaults.global.animation.duration = 0;
 Chart.defaults.global.hover.animationDuration = 0;
 Chart.defaults.global.responsiveAnimationDuration = 0;

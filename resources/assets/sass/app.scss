@@ -22,6 +22,7 @@ h2 {
   font-size: 1.6em;
 }
 
+
 // Navbar
 .navbar-default {
   height: 75px;
@@ -133,6 +134,41 @@ h2 {
   }
   to {
     opacity: 1
+  }
+}
+
+.contributors {
+  margin-top: 20px;
+  .panel {
+    min-height: 270px;
+  }
+  img {
+    width: 100%;
+  }
+  .center {
+    text-align: center;
+    display: block;
+    margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  ul, li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    .right {
+      float: right;
+    }
+    .merged {
+      background-color: $status-merged-color;
+    }
+    .created {
+      background-color: $status-created-color;
+    }
+    .closed {
+      background-color: $status-closed-color;
+    }
   }
 }
 
