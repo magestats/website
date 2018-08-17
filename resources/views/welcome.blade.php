@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('description')In {{ $year }}, across all Magento Community Projects a total of {{ $pullrequests->created }} pull requests were created, {{ $pullrequests->merged }} of them were merged and {{ $pullrequests->closed - $pullrequests->merged  }}were closed without being merged.@endsection
+@section('description')In {{ $year }}, across all Magento Community Projects a total of {{ $pullrequests->created }} pull requests were created, {{ $pullrequests->merged }} of them were merged and {{ $pullrequests->closed - $pullrequests->merged  }} were closed without being merged.@endsection
 @section('content')
     <div id="app">
         <div id="fullpage" class="fullpage-wrapper">
