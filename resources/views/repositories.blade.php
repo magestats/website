@@ -48,7 +48,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2>Pull Requests</h2>
-                <p>In @if(Request::is('*/' . $active_year . '/' . $active_month)){{ $active_english_month }} {{ $active_year }}, @else {{ $active_year }}, @endif a total of <span class="label label-default created">{{ $pullrequests->created }}</span> pull requests were created, <span class="label label-default merged">{{ $pullrequests->merged }}</span> of them were merged and <span class="label label-default closed">{{ $pullrequests->closed - $pullrequests->merged }}</span> were closed without being merged.</p>
+                <p class="title">In @if(Request::is('*/' . $active_year . '/' . $active_month)){{ $active_english_month }} {{ $active_year }}, @else {{ $active_year }}, @endif a total of <span class="label label-default created">{{ $pullrequests->created }}</span> pull requests were created, <span class="label label-default merged">{{ $pullrequests->merged }}</span> of them were merged and <span class="label label-default closed">{{ $pullrequests->closed - $pullrequests->merged }}</span> were closed without being merged.</p>
                 @if(Request::is('*/' . $active_year . '/' . $active_month))
                     <repository-chart year="{{ $active_year }}" repo="{{ $repo }}/pullrequests/{{ (int) $active_month }}"></repository-chart>
                 @else
@@ -61,7 +61,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2>Issues</h2>
-                <p>In @if(Request::is('*/' . $active_year . '/' . $active_month)){{ $active_english_month }} {{ $active_year }}, @else {{ $active_year }}, @endif a total of <span class="label label-default created">{{ $issues->created }}</span> issues were created and <span class="label label-default closed">{{ $issues->closed }}</span> issues were closed.</p>
+                <p class="title">In @if(Request::is('*/' . $active_year . '/' . $active_month)){{ $active_english_month }} {{ $active_year }}, @else {{ $active_year }}, @endif a total of <span class="label label-default created">{{ $issues->created }}</span> issues were created and <span class="label label-default closed">{{ $issues->closed }}</span> issues were closed.</p>
                 @if(Request::is('*/' . $active_year . '/' . $active_month))
                     <repository-chart year="{{ $active_year }}" repo="{{ $repo }}/issues/{{ (int) $active_month }}"></repository-chart>
                 @else
@@ -73,7 +73,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2>Contributors</h2>
-                <p>In @if(Request::is('*/' . $active_year . '/' . $active_month)){{ $active_english_month }} {{ $active_year }}, @else {{ $active_year }}, @endif a total of <span class="label label-default closed">{{ $contributors }}</span> individual contributors contributed to <span class="label label-default closed">{{ $repo }}</span>.</p>
+                <p class="title">In @if(Request::is('*/' . $active_year . '/' . $active_month)){{ $active_english_month }} {{ $active_year }}, @else {{ $active_year }}, @endif a total of <span class="label label-default closed">{{ $contributors }}</span> individual contributors contributed to <span class="label label-default closed">{{ $repo }}</span>.</p>
                 @if(Request::is('*/' . $active_year . '/' . $active_month))
                     <contributors year="{{ $active_year }}" repo="{{ $repo }}/contributors/{{ (int) $active_month }}"></contributors>
                 @else

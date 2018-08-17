@@ -1,11 +1,14 @@
 require('./bootstrap');
 var VueLazyload = require('vue-lazyload');
+var VueFullPage = require('vue-fullpage.js');
+
 
 window.Vue = require('vue');
 Vue.component('repository-chart', require('./components/repository-chart.vue'));
 Vue.component('contributors', require('./components/contributors.vue'));
 Vue.component('top-contributors', require('./components/top-contributors.vue'));
 Vue.use(VueLazyload);
+Vue.use(VueFullPage);
 
 Chart.defaults.global.animation.duration = 0;
 Chart.defaults.global.hover.animationDuration = 0;
@@ -47,7 +50,6 @@ Chart.plugins.register({
 });
 Chart.plugins.register({
     afterDraw: function(chart) {
-        console.log(chart);
         var ctx = chart.ctx;
         var fontSize = 12;
         var fontStyle = 300;
@@ -92,4 +94,10 @@ $(window).scroll(function() {
 topButton.on('click', function(e) {
     e.preventDefault();
     $('html, body').animate({scrollTop:0}, '300');
+});
+
+new fullpage('#fullpage', {
+    //options here
+    autoScrolling:true,
+    scrollHorizontally: true
 });

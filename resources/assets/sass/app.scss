@@ -4,6 +4,7 @@
 
 // Variables
 @import "variables";
+@import "fullpage";
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -79,6 +80,10 @@ h2 {
   -o-animation: fadein 1s;
   animation: fadein 1s;
   font-weight: 300;
+
+  .title {
+    font-size: 1.1em;
+  }
 }
 
 @media (min-width: $grid-float-breakpoint) {
@@ -156,6 +161,7 @@ h2 {
     opacity: 1
   }
 }
+#fullpage,
 .repositories {
   .merged {
     background-color: $status-merged-color;
@@ -202,78 +208,44 @@ h2 {
   }
 }
 
-// Fullpage
+#fullpage {
+  text-align: center;
 
-.fullpage {
-  height: 100%;
-  .section {
-    height: 100%;
-    width: 100%;
-    padding: 10% 10%;
-    float: left;
-    overflow: hidden;
-    h2 {
-      text-align: center;
-      font-size: 1.8em;
-      line-height: 2em;
-      font-weight: 500;
-    }
-    p {
-      text-align: center;
-      font-size: 1.4em;
-      line-height: 1.8em;
-      font-weight: 300;
-    }
-    &.first {
-      margin-top: 50px;
-      min-height: 800px;
+  .section-content {
+    padding: 0 10%;
+  }
 
-    }
-    &.second {
-      background: #eee;
-      min-height: 700px;
-    }
-    &.third {
-      min-height: 3100px;
-    }
-    .small {
-      font-weight: 300;
-      text-align: right;
-    }
+  h2 {
+    text-transform: uppercase;
+    font-size: 3em;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 1.6em;
+  }
+
+  .chart {
+    height: 600px;
+  }
+  .contributors {
+    padding: 0 40%;
+  }
+
+  .second {
+    background-color: $status-merged-color;
+    color: #fff;
   }
 }
 
 @media (min-width: $grid-float-breakpoint) {
-  .fullpage {
-    height: 100%;
-    .section {
-      height: 100%;
-      width: 100%;
-      padding: 10% 5%;
-      float: left;
-      h2 {
-        text-align: center;
-        font-size: 4em;
-        line-height: 2em;
-        text-transform: uppercase;
-        font-weight: 300;
-      }
-      p {
-        text-align: center;
-        font-size: 1.4em;
-        line-height: 1.8em;
-        font-weight: 300;
-      }
-      &.first {
-        margin-top: 50px;
-      }
-      &.second {
-        background: #eee;
-      }
-      .small {
-        font-weight: 300;
-        text-align: right;
-      }
+  #fullpage {
+    h2 {
+      font-size: 5em;
+      font-weight: 500;
+    }
+    p {
+      font-size: 2.3em;
     }
   }
 }
