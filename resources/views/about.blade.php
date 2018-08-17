@@ -18,7 +18,7 @@
         <p>If you think there is a statistic missing or you have an idea to improve <strong>Magestats</strong> go to the issues section on <a href="https://github.com/magestats/ideas/issues">github.com/magestats</a> and check if anyone else had the same idea as you. <br />If not on <a href="https://github.com/magestats/ideas/issues/new">create a new issue here</a> and describe your idea.</p>
 
         <h2>Who's behind Magestats?</h2>
-        <p><strong>Magestats</strong> is created by <a href="https://github.com/mhauri">Marcel Hauri</a>, Magento 2 <a href="https://magento.com/magento-contributors#/community-maintainers">Core</a> & <a href="https://github.com/orgs/magento/teams/devdocs-maintainers/members">Devdocs</a> Maintainer</a></p>
+        <p><strong>Magestats</strong> is created by <a href="https://github.com/mhauri">Marcel Hauri</a>, Magento 2 <a href="https://magento.com/magento-contributors#/community-maintainers">Core</a> & <a href="https://github.com/orgs/magento/teams/devdocs-maintainers/members">Devdocs</a> Community Maintainer</a></p>
 
     </div>
 @endsection
