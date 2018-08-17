@@ -232,7 +232,8 @@ h2 {
     padding: 0 40%;
   }
 
-  .second {
+  .second,
+  .error {
     background-color: $status-merged-color;
     color: #fff;
   }

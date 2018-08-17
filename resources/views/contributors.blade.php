@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('description')In {{ $active_year }}, a total of {{ $total }} individual contributors contributed across all Magento Community projects.@endsection
 @section('content')
     <div class="container content" id="app">
         <div class="row">

@@ -97,7 +97,7 @@ topButton.on('click', function(e) {
 });
 
 new fullpage('#fullpage', {
-    //options here
     autoScrolling:true,
-    scrollHorizontally: true
+    scrollHorizontally: true,
+    licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE'
 });

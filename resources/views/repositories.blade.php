@@ -1,5 +1,6 @@
 @extends('layouts.app')
-
+@section('keywords'){{ $repo }}@endsection
+@section('description')In @if(Request::is('*/' . $active_year . '/' . $active_month)){{ $active_english_month }} {{ $active_year }}, @else {{ $active_year }}, @endif a total of {{ $pullrequests->created }} pull requests were created, {{ $pullrequests->merged }} of them were merged and {{ $pullrequests->closed - $pullrequests->merged }} were closed without being merged.@endsection
 @section('content')
     <div class="container content repositories" id="app">
         <div class="row">
@@ -73,7 +74,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <h2>Contributors</h2>
-                <p class="title">In @if(Request::is('*/' . $active_year . '/' . $active_month)){{ $active_english_month }} {{ $active_year }}, @else {{ $active_year }}, @endif a total of <span class="label label-default closed">{{ $contributors }}</span> individual contributors contributed to <span class="label label-default closed">{{ $repo }}</span>.</p>
+                <p class="title">In @if(Request::is('*/' . $active_year . '/' . $active_month)){{ $active_english_month }} {{ $active_year }}, @else {{ $active_year }}, @endif a total of <span class="label label-default created">{{ $contributors }}</span> individual contributors contributed to <strong>{{ $repo }}</strong>.</p>
                 @if(Request::is('*/' . $active_year . '/' . $active_month))
                     <contributors year="{{ $active_year }}" repo="{{ $repo }}/contributors/{{ (int) $active_month }}"></contributors>
                 @else
