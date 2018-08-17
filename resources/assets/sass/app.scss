@@ -49,6 +49,10 @@ h2 {
   }
 }
 
+.dropdown-menu>li>a {
+  font-weight: 300;
+}
+
 #navbar .container {
   -webkit-animation: fadein 1s;
   -moz-animation: fadein 1s;
@@ -162,7 +166,8 @@ h2 {
   }
 }
 #fullpage,
-.repositories {
+.repositories,
+.content {
   .merged {
     background-color: $status-merged-color;
   }
@@ -195,15 +200,6 @@ h2 {
     padding: 0;
     .right {
       float: right;
-    }
-    .merged {
-      background-color: $status-merged-color;
-    }
-    .created {
-      background-color: $status-created-color;
-    }
-    .closed {
-      background-color: $status-closed-color;
     }
   }
 }
