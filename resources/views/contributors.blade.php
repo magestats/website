@@ -23,6 +23,9 @@
                     </div>
                 </div>
             </div>
+            <div class="col-xs-12">
+                <p>In {{ $active_year }}, a total of {{ $total }} individual contributors contributed to Magento open source projects.</p>
+            </div>
         </div>
         <div class="row">
             <div class="col-xs-12">

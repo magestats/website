@@ -4,6 +4,7 @@ var VueLazyload = require('vue-lazyload');
 window.Vue = require('vue');
 Vue.component('repository-chart', require('./components/repository-chart.vue'));
 Vue.component('contributors', require('./components/contributors.vue'));
+Vue.component('top-contributors', require('./components/top-contributors.vue'));
 Vue.use(VueLazyload);
 
 Chart.defaults.global.animation.duration = 0;

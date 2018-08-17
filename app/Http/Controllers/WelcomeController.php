@@ -6,6 +6,16 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        return view('welcome')->with(['title' => null]);
+        $year = 2018;
+        $pullRequests = $this->getJsonFile($year, 'pullrequests');
+        $issues = $this->getJsonFile($year, 'issues');
+        $contributors = $this->getJsonFile($year, 'contributors');
+        return view('welcome')->with([
+            'title' => null,
+            'year' => $year,
+            'pullrequests' => $pullRequests->total,
+            'issues' => $issues->total,
+            'contributors' => \count((array)$contributors->contributors)
+        ]);
     }
 }
