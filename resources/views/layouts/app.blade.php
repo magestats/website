@@ -12,13 +12,13 @@
     <meta property="og:title" content="{{ isset($title) ? $title . ' | ': '' }}{{ config('app.name', 'Magestats') }}" />
     <meta property="og:description" content="@yield('description', config('app.name', 'Magestats'))" />
     <meta property="og:url" content="{{ Request::url() }}" />
-    <meta property="og:image" content="@yield('image', 'https://magestats.net/images/magestats.png')" />
+    <meta property="og:image" content="@yield('image', 'https://magestats.net/images/profile.png')" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@magestats_net" />
     <meta name="twitter:title" content="{{ isset($title) ? $title . ' | ': '' }}{{ config('app.name', 'Magestats') }}" />
     <meta name="twitter:description" content="@yield('description', config('app.name', 'Magestats'))" />
     <meta name="twitter:url" content="{{ Request::url() }}" />
-    <meta name="twitter:image" content="@yield('image', 'https://magestats.net/images/magestats.png')" />
+    <meta name="twitter:image" content="@yield('image', 'https://magestats.net/images/profile.png')" />
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
