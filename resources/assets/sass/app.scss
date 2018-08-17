@@ -208,7 +208,10 @@ h2 {
   height: 100%;
   .section {
     height: 100%;
-    padding: 10% 5%;
+    width: 100%;
+    padding: 10% 10%;
+    float: left;
+    overflow: hidden;
     h2 {
       text-align: center;
       font-size: 1.8em;
@@ -223,9 +226,15 @@ h2 {
     }
     &.first {
       margin-top: 50px;
+      min-height: 800px;
+
     }
     &.second {
       background: #eee;
+      min-height: 700px;
+    }
+    &.third {
+      min-height: 3100px;
     }
     .small {
       font-weight: 300;
@@ -239,8 +248,9 @@ h2 {
     height: 100%;
     .section {
       height: 100%;
+      width: 100%;
       padding: 10% 5%;
-      min-height: 1000px;
+      float: left;
       h2 {
         text-align: center;
         font-size: 4em;

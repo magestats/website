@@ -11,7 +11,6 @@
             <h2>{{ $issues->closed }} Issues Closed</h2>
             <p>A total of {{ $issues->created }} issues were opened across all Magento Community projects and {{ $issues->closed }} issues were closed in {{ $year }}.</p>
             <repository-chart repo="issues" year="{{ $year }}"></repository-chart>
-            <span class="small">*for all Magento Community Projects</span>
         </div>
         <div class="section third">
             <h2>{{ $contributors }} individual Contributors</h2>
