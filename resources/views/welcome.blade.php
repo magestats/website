@@ -6,10 +6,10 @@
             <div class="section first">
                 <div class="section-content">
                     <h2>{{ $pullrequests->created }} Pull Requests</h2>
-                    <p>In {{ $year }}, across all Magento
-                        Community Projects a total of <span
+                    <p>In {{ $year }}, a total of <span
                                 class="label label-default created">{{ $pullrequests->created }}</span> pull requests
-                        were created, <span class="label label-default merged">{{ $pullrequests->merged }}</span>
+                        were created across all Magento
+                        Community Projects, <span class="label label-default merged">{{ $pullrequests->merged }}</span>
                         of them were merged
                         and <span
                                 class="label label-default closed">{{ $pullrequests->closed - $pullrequests->merged  }}</span>
