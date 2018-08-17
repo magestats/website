@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="col-xs-12">
-                <p class="title">In {{ $active_year }}, a total of {{ $total }} individual contributors contributed across all Magento Community projects.</p>
+                <p class="title">In {{ $active_year }}, a total of <span class="label label-default created">{{ $total }}</span> individual contributors contributed across all Magento Community projects.</p>
             </div>
         </div>
         <div class="row">
