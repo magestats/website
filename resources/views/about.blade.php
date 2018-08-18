@@ -6,7 +6,7 @@
         <h1>About Magestats</h1>
 
         <h2>Where does the data come from?</h2>
-        <p>All data comes from <a href="https://github.com/">Github</a> and is regularly retrieved via its <a href="https://developer.github.com/">API</a>. The data is prepared for the statistics on <strong>Magestats</strong> and stored in JSON format.</p>
+        <p>All data comes from <a href="https://github.com/">Github</a> and is regularly retrieved via its <a href="https://developer.github.com/">API</a>. <br />The data is prepared for the statistics on <strong>Magestats</strong> and stored in JSON format, which can be found on <a href="https://github.com/magestats/statistics">github.com/magestats/statistics</a>.</p>
 
         <h2>Which projects are included and which are not?</h2>
         <p><strong>Magestats</strong> has access to all public projects of Magento, these are: @foreach (explode(',', env('MAGENTO_REPOS')) as $repo) <a href="https://github.com/{{$repo}}">{{ $repo }}</a>@if($repo !== 'magento-research/pwa-studio'),@else.@endif @endforeach</p><p><strong>Magestats</strong> has no access to private projects like: @foreach (explode(',', env('MAGENTO_PRIVATE_REPOS')) as $repo) <a href="https://github.com/{{$repo}}">{{ $repo }}</a>@if($repo !== 'magento/bulk-api-ee'),@else.@endif @endforeach </p>
