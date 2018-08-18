@@ -23,6 +23,7 @@
                                 @endforeach
                             </ul>
                         </div>
+                    @endif
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                                     aria-haspopup="true"
@@ -40,7 +41,6 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
                 </div>
             </div>
             <div class="col-xs-12">

@@ -155,13 +155,4 @@ class Contributors extends Statistics
         }
         return $this->authors[$author];
     }
-
-    private function getMonth(string $time): string
-    {
-        $timestamp = strtotime($time);
-        if ($timestamp) {
-            return date('m', $timestamp);
-        }
-        return '';
-    }
 }

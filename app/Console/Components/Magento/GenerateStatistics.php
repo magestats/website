@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Console\Components\Magento;
 
+use App\Repositories;
 use App\Statistics;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -18,6 +19,7 @@ class GenerateStatistics extends Command
     protected $description = 'Generate Statistics';
 
     public function handle(
+        Repositories $repositories,
         Statistics\PullRequests $pullRequests,
         Statistics\Issues $issues,
         Statistics\Contributors $contributors
@@ -33,8 +35,7 @@ class GenerateStatistics extends Command
         }
 
         $year = $this->input->getArgument(self::ARGUMENT_YEAR);
-        $publicRepos = explode(',', getenv('MAGENTO_REPOS'));
-
+        $publicRepos = $repositories->all()->toArray();
         if ($year && $year === 'current') {
             $year = date('Y');
         }
@@ -50,7 +51,11 @@ class GenerateStatistics extends Command
         $this->output->text('Store issues by year');
         $issues->storeIssues((int)$year);
 
-        foreach ($publicRepos as $repo) {
+        foreach ($publicRepos as $repository) {
+            $repo = $repository['full_name'];
+            if ((int)Carbon::createFromTimeString($repository['created'])->year > $year) {
+                continue;
+            }
             $this->output->text(sprintf('Store contributors for repo %s by year', $repo));
             $contributors->storeContributorsByRepository($repo, (int)$year);
 
@@ -62,6 +67,19 @@ class GenerateStatistics extends Command
 
             if ($allMonths) {
                 foreach (range(1, 12) as $month) {
+                    if (
+                        Carbon::createFromTimeString($repository['created'])->timestamp
+                        >
+                        Carbon::create(
+                            $year,
+                            $month,
+                            Carbon::createFromTimeString($repository['created'])->day,
+                            Carbon::createFromTimeString($repository['created'])->hour,
+                            Carbon::createFromTimeString($repository['created'])->minute,
+                            Carbon::createFromTimeString($repository['created'])->second
+                        )->timestamp) {
+                        continue;
+                    }
                     $this->output->text(sprintf('Store contributors for repo %s by year and month %s', $repo, $month));
                     $contributors->storeContributorsByRepositoryAndMonth($repo, (int)$month, (int)$year);
 
