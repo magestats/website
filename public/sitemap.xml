@@ -1,0 +1,1482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://magestats.net/</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://magestats.net/contributors</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/php-7.2-support</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-research/pwa-studio</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/bulk-api-ce</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/graphql-ce</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-jp</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-l10n</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/payment-improvements</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/about</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://magestats.net/contributors/2018</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/contributors/2017</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/contributors/2016</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/contributors/2015</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/contributors/2014</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/contributors/2013</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/contributors/2012</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/contributors/2011</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2011</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2018/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2018/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2018/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2018/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2018/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2014</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2018/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2018/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2018/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2018/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2018/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2017</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2018/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2018/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2018/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2018/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2018/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2017</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2018/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2018/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2018/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2018/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2018/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/php-7.2-support/2017</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/php-7.2-support/2018/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/php-7.2-support/2018/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/php-7.2-support/2018/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/php-7.2-support/2018/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/php-7.2-support/2018/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/php-7.2-support/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/php-7.2-support/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/php-7.2-support/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-research/pwa-studio/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-research/pwa-studio/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-research/pwa-studio/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/bulk-api-ce/2018/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/bulk-api-ce/2018/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/bulk-api-ce/2018/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/bulk-api-ce/2018/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/bulk-api-ce/2018/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/bulk-api-ce/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/bulk-api-ce/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/bulk-api-ce/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2015</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2018/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2018/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2018/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2018/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2018/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/graphql-ce/2018/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/graphql-ce/2018/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/graphql-ce/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/graphql-ce/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/graphql-ce/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2017</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2018/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2018/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2018/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2018/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2018/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-jp/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-jp/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-jp/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-l10n/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-l10n/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-l10n/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/payment-improvements/2018/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/payment-improvements/2018/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/payment-improvements/2018/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/payment-improvements/2018/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/payment-improvements/2018/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/payment-improvements/2018/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2017/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2016/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2015/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2014/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2013/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2012/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2011/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2/2011/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2017/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2016/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2015/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2014/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2014/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2014/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2014/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2014/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2014/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2014/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2014/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2014/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/devdocs/2014/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2017/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2017/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/import-export-improvements/2017/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2017/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2017/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2017/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2017/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2017/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2017/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2017/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/msi/2017/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento-engcom/php-7.2-support/2017/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2017/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/01</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/02</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/03</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/04</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2016/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2015/05</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2015/06</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2015/07</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2015/08</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2015/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2015/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2015/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/data-migration-tool/2015/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2017/09</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2017/10</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2017/11</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://magestats.net/repositories/magento/magento2-functional-testing-framework/2017/12</loc>
+  <lastmod>2018-08-18T21:27:37+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+
+
+</urlset>
