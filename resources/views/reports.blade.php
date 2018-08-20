@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('description')The numbers may differ from those listed in the monthly Community Engineering Hangouts. The reason for this is that Magestats does not have access to private or partner repositories of Magento.@endsection
 @section('content')
     <div class="container content reports" id="app">
         <div class="row">
@@ -101,13 +102,6 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </div>
-        <hr/>
-        <div class="row">
-            <div class="col-xs-12">
-                <h2>Contributors</h2>
-
             </div>
         </div>
     </div>

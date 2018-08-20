@@ -16,11 +16,16 @@ class ReportsController extends Controller
 
         return view('reports')->with(
             [
-                'title' => 'Reports',
+                'title' => $this->getTitle('Reports for ', $year),
                 'active_year' => $year,
                 'pullrequests' => $this->getJsonFile($year, 'pullrequests'),
                 'issues' => $this->getJsonFile($year, 'issues')
             ]
         );
+    }
+
+    private function getTitle(string $name, string $year)
+    {
+        return sprintf('%s %s', $name, $year);
     }
 }
