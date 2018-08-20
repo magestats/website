@@ -35,10 +35,19 @@ class Statistics
      */
     protected $mergedColor = [255, 154, 114];
     /**
+     * @var array
+     */
+    protected $rejectedColor = [255, 238, 114];
+    /**
      * @var bool
      */
     protected $hasItems = false;
 
+    /**
+     * Statistics constructor.
+     * @param PullRequests $pullRequests
+     * @param Issues $issues
+     */
     public function __construct(PullRequests $pullRequests, Issues $issues)
     {
         $this->pullRequests = $pullRequests;
@@ -105,9 +114,10 @@ class Statistics
      * @param array $data
      * @param array $color
      * @param string $type
+     * @param bool $hidden
      * @return array
      */
-    protected function getDataset(string $label, array $data, array $color, string $type = 'bar')
+    protected function getDataset(string $label, array $data, array $color, string $type = 'bar', bool $hidden = false): array
     {
         $transparency = self::DATASET_TRANSPARENCY;
         return [
@@ -119,8 +129,41 @@ class Statistics
             'pointBackgroundColor' => sprintf('rgba(%s, %s)', implode(',', $color), $transparency),
             'pointBorderColor' => sprintf('rgba(%s, %s)', implode(',', $color), $transparency),
             'pointHoverBackgroundColor' => sprintf('rgba(%s, %s)', implode(',', $color), $transparency),
-            'type' => $type
+            'type' => $type,
+            'hidden' => $hidden,
         ];
+    }
+
+    /**
+     * @param array $closed
+     * @param array $merged
+     * @return array
+     */
+    protected function getRejected(array $closed, array $merged): array
+    {
+        $data = [];
+        foreach ($closed as $month => $value) {
+            $data[$month] = $value - $merged[$month];
+        }
+        return $data;
+    }
+
+    /**
+     * @param array $closed
+     * @param array $merged
+     * @return array
+     */
+    protected function getAcceptanceRate(array $closed, array $merged): array
+    {
+        $data = [];
+        foreach ($closed as $month => $value) {
+            if ($value === 0) {
+                $data[$month] = '0%';
+                continue;
+            }
+            $data[$month] = sprintf('%s%%', round(($merged[$month] / $value) * 100));
+        }
+        return $data;
     }
 
     /**
@@ -134,7 +177,10 @@ class Statistics
         Storage::put(sprintf('public/%d/%s.json', $year, $filename), $json, 'public');
     }
 
-
+    /**
+     * @param array $data
+     * @return int
+     */
     protected function countTotals(array $data): int
     {
         $total = 0;

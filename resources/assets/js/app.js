@@ -17,14 +17,14 @@ Chart.defaults.global.defaultFontFamily = 'Heebo, sans-serif';
 Chart.defaults.global.defaultFontStyle = 300;
 Chart.plugins.register({
     afterDatasetsDraw: function(chart) {
-        var ctx = chart.ctx;
-        chart.data.datasets.forEach(function(dataset, i) {
+        var ctx = chart.ctx,
+        datasets = chart.data.datasets;
+        datasets.forEach(function(dataset, i) {
             var meta = chart.getDatasetMeta(i);
-            if (!meta.hidden) {
+            if (!datasets[i].hidden) {
                 meta.data.forEach(function(element, index) {
                     // Draw the text in black, with the specified font
                     ctx.fillStyle = element._model.borderColor.replace('0.8', '1');
-
                     var fontSize = 12;
                     var fontStyle = 300;
                     var fontFamily = 'Heebo, sans-serif';

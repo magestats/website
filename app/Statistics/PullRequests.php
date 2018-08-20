@@ -50,6 +50,13 @@ class PullRequests extends Statistics
             'closed' => $this->countTotals($closed['total'])
         ];
         $data['datasets'] = $datasets;
+        $data['_data'] = [
+            'Merged' => $merged['total'],
+            'Created' => $created['total'],
+            'Closed' => $closed['total'],
+            'Rejected' => $this->getRejected($closed['total'], $merged['total']),
+            'Acceptance Rate' => $this->getAcceptanceRate($closed['total'], $merged['total']),
+        ];
         $this->storeDataByYear(self::FILENAME, $year, $data);
     }
 
@@ -81,6 +88,13 @@ class PullRequests extends Statistics
             'closed' => $this->countTotals($closed[$repository]['total'])
         ];
         $data['datasets'] = $datasets;
+        $data['_data'] = [
+            'Merged' => $merged[$repository]['total'],
+            'Created' => $created[$repository]['total'],
+            'Closed' => $closed[$repository]['total'],
+            'Rejected' => $this->getRejected($closed[$repository]['total'], $merged[$repository]['total']),
+            'Acceptance Rate' => $this->getAcceptanceRate($closed[$repository]['total'], $merged[$repository]['total']),
+        ];
         $this->storeDataByYear(sprintf('%s/%s', $repository, self::FILENAME), $year, $data);
     }
 
@@ -108,6 +122,13 @@ class PullRequests extends Statistics
             'closed' => $this->countTotals($closed[$repository]['months'][$month])
         ];
         $data['datasets'] = $datasets;
+        $data['_data'] = [
+            'Merged' => $merged[$repository]['months'][$month],
+            'Created' => $created[$repository]['months'][$month],
+            'Closed' => $closed[$repository]['months'][$month],
+            'Rejected' => $this->getRejected($closed[$repository]['months'][$month], $merged[$repository]['months'][$month]),
+            'Acceptance Rate' => $this->getAcceptanceRate($closed[$repository]['months'][$month], $merged[$repository]['months'][$month]),
+        ];
         $this->storeDataByYear(sprintf('%s/%s/%d', $repository, self::FILENAME, $month), $year, $data);
     }
 

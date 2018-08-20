@@ -74,6 +74,16 @@
                             @endforeach
                         </ul>
                     </li>
+                    <li class="dropdown{{ Request::is('reports/*') ? ' active' : null }}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Reports<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            @foreach (range(2018, 2011) as $reportsYear)
+                                <li{{ Request::is('reports/' . $reportsYear) ? ' class=active' : null }}><a
+                                            href="/reports/{{ $reportsYear }}">{{ $reportsYear }}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li{{ Request::is('about') ? ' class=active' : null }}><a href="/about">About Magestats</a></li>
