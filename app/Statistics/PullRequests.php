@@ -47,7 +47,9 @@ class PullRequests extends Statistics
         $data['total'] = [
             'merged' => $this->countTotals($merged['total']),
             'created' => $this->countTotals($created['total']),
-            'closed' => $this->countTotals($closed['total'])
+            'closed' => $this->countTotals($closed['total']),
+            'rejected' => (int)implode('', $this->getRejected([$this->countTotals($closed['total'])], [$this->countTotals($merged['total'])])),
+            'acceptance_rate' => implode('',$this->getAcceptanceRate([$this->countTotals($closed['total'])], [$this->countTotals($merged['total'])])),
         ];
         $data['datasets'] = $datasets;
         $data['_data'] = [
@@ -85,7 +87,9 @@ class PullRequests extends Statistics
         $data['total'] = [
             'merged' => $this->countTotals($merged[$repository]['total']),
             'created' => $this->countTotals($created[$repository]['total']),
-            'closed' => $this->countTotals($closed[$repository]['total'])
+            'closed' => $this->countTotals($closed[$repository]['total']),
+            'rejected' => (int)implode('', $this->getRejected([$this->countTotals($closed[$repository]['total'])], [$this->countTotals($merged[$repository]['total'])])),
+            'acceptance_rate' => implode('',$this->getAcceptanceRate([$this->countTotals($closed[$repository]['total'])], [$this->countTotals($merged[$repository]['total'])])),
         ];
         $data['datasets'] = $datasets;
         $data['_data'] = [
@@ -119,7 +123,9 @@ class PullRequests extends Statistics
         $data['total'] = [
             'merged' => $this->countTotals($merged[$repository]['months'][$month]),
             'created' => $this->countTotals($created[$repository]['months'][$month]),
-            'closed' => $this->countTotals($closed[$repository]['months'][$month])
+            'closed' => $this->countTotals($closed[$repository]['months'][$month]),
+            'rejected' => (int)implode('', $this->getRejected([$this->countTotals($closed[$repository]['months'][$month])], [$this->countTotals($merged[$repository]['months'][$month])])),
+            'acceptance_rate' => implode('',$this->getAcceptanceRate([$this->countTotals($closed[$repository]['months'][$month])], [$this->countTotals($merged[$repository]['months'][$month])])),
         ];
         $data['datasets'] = $datasets;
         $data['_data'] = [

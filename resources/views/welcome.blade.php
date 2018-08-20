@@ -14,6 +14,8 @@
                         and <span
                                 class="label label-default closed">{{ $pullrequests->closed - $pullrequests->merged  }}</span>
                         were closed without being merged.</p>
+                    <br />
+                    <p><a href="{{ route('reports') }}" class="btn btn-primary btn-lg" role="button">Show reports</a></p>
                 </div>
             </div>
             <div class="section second">
@@ -21,6 +23,8 @@
                     <h2>{{ $issues->closed }} Issues Closed</h2>
                     <p>In {{ $year }}, a total of <span class="label label-default created">{{ $issues->created }}</span> issues were
                         created and <span class="label label-default closed">{{ $issues->closed }}</span> issues were closed across all Magento Community Projects.</p>
+                    <br />
+                    <p><a href="{{ route('reports') }}" class="btn btn-primary btn-lg" role="button">Show reports</a></p>
                 </div>
             </div>
             <div class="section third">

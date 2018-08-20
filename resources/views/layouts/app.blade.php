@@ -62,7 +62,15 @@
         <div id="navbar" class="navbar navbar-inverse navbar-fixed-top navbar-collapse collapse">
             <div class="container">
                 <ul class="nav navbar-nav">
-                    <li{{ Request::is('contributors') ? ' class=active' : null }}><a href="{{route('contributors')}}">Contributors</a>
+                    <li class="dropdown{{ Request::is('contributors/*') ? ' active' : null }}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Contributors<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            @foreach (range((int)date('Y'), 2011) as $reportsYear)
+                                <li{{ Request::is('contributors/' . $reportsYear) ? ' class=active' : null }}><a
+                                            href="/contributors/{{ $reportsYear }}">{{ $reportsYear }}</a></li>
+                            @endforeach
+                        </ul>
                     </li>
                     <li class="dropdown{{ Request::is('repositories/*') ? ' active' : null }}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -78,7 +86,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Reports<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            @foreach (range(2018, 2011) as $reportsYear)
+                            @foreach (range((int)date('Y'), 2011) as $reportsYear)
                                 <li{{ Request::is('reports/' . $reportsYear) ? ' class=active' : null }}><a
                                             href="/reports/{{ $reportsYear }}">{{ $reportsYear }}</a></li>
                             @endforeach

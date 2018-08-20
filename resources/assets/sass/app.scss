@@ -24,6 +24,9 @@ h2 {
   font-size: 1.6em;
 }
 
+strong {
+  font-weight: 500;
+}
 
 // Navbar
 .navbar-default {
@@ -121,6 +124,10 @@ h2 {
   padding: 10px 10px;
 }
 
+.table-responsive {
+  margin-top: 15px;
+}
+
 // Animations
 @keyframes  fadein {
   from {
@@ -172,25 +179,56 @@ h2 {
   .merged {
     background-color: $status-merged-color;
     &-light {
-      background-color: lighten($status-merged-color, 20);
+      &-20 {
+        background-color: lighten($status-merged-color, 20);
+      }
+      &-10 {
+        background-color: lighten($status-merged-color, 10);
+      }
     }
   }
   .created {
     background-color: $status-created-color;
     &-light {
-      background-color: lighten($status-created-color, 20);
+      &-20 {
+        background-color: lighten($status-created-color, 20);
+      }
+      &-10 {
+        background-color: lighten($status-created-color, 10);
+      }
     }
   }
   .closed {
     background-color: $status-closed-color;
     &-light {
-      background-color: lighten($status-closed-color, 20);
+      &-20 {
+        background-color: lighten($status-closed-color, 20);
+      }
+      &-10 {
+        background-color: lighten($status-closed-color, 10);
+      }
     }
   }
   .rejected {
     background-color: $status-rejected-color;
     &-light {
-      background-color: lighten($status-rejected-color, 20);
+      &-20 {
+        background-color: lighten($status-rejected-color, 20);
+      }
+      &-10 {
+        background-color: lighten($status-rejected-color, 10);
+      }
+    }
+  }
+  .acceptance-rate {
+    background-color: $status-acceptance-rate-color;
+    &-light {
+      &-20 {
+        background-color: lighten($status-acceptance-rate-color, 20);
+      }
+      &-10 {
+        background-color: lighten($status-acceptance-rate-color, 10);
+      }
     }
   }
 }
