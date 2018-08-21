@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Components\Magento\FetchRepositories::class,
         \App\Console\Components\Magento\FetchIssues::class,
         \App\Console\Components\Magento\GenerateStatistics::class,
+        \App\Console\Components\Sitemap\Generate::class,
 
     ];
 

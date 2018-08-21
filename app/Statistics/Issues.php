@@ -83,7 +83,7 @@ class Issues extends Statistics
         $this->reset();
         $data = [
             'generator' => 'https://magestats.net/',
-            'title' => sprintf('%s - %s %s', $repository, Carbon::create($year, $month)->englishMonth, $year),
+            'title' => sprintf('%s - %s %s', $repository, Carbon::create($year, $month)->format('F'), $year),
             'generated' => Carbon::now(),
             'labels' => range(1, Carbon::create($year, $month)->daysInMonth),
         ];

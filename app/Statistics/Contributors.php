@@ -61,7 +61,7 @@ class Contributors extends Statistics
     {
         $data = [
             'generator' => 'https://magestats.net/',
-            'title' => sprintf('%s - %s %s', $repository, Carbon::create($year, $month)->englishMonth, $year),
+            'title' => sprintf('%s - %s %s', $repository, Carbon::create($year, $month)->format('F'), $year),
             'generated' => Carbon::now(),
         ];
         $contributors = $this->fetchContributorsByYear($year);

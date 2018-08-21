@@ -47,7 +47,7 @@
                 <p>
                     <strong>Link:</strong> <a href="{{ $data['html_url'] }}">{{ $data['html_url'] }}</a>
                     <br/>
-                    <strong>Created:</strong> {{ \Carbon\Carbon::createFromTimeString($data['created'])->englishMonth }} {{ \Carbon\Carbon::createFromTimeString($data['created'])->year }}
+                    <strong>Created:</strong> {{ \Carbon\Carbon::createFromTimeString($data['created'])->format('F') }} {{ \Carbon\Carbon::createFromTimeString($data['created'])->year }}
                     <br />
                     <strong>Default branch:</strong> {{ $data['default_branch'] }}
                 </p>

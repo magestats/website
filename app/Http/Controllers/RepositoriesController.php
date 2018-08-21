@@ -41,7 +41,7 @@ class RepositoriesController extends Controller
                 'repo' => sprintf('%s/%s', $name, $repo),
                 'active_year' => $year ?? date('Y'),
                 'active_month' => $month ?? date('m'),
-                'active_english_month' => Carbon::create($year, $month)->englishMonth,
+                'active_english_month' => Carbon::create($year, $month)->format('F'),
                 'data' => $data,
                 'year_selector' => range(date('Y'), $createdYear),
                 'month_selector' => $this->getMonthRange((int)$year, (int)$createdYear, (int)$createdMonth),
@@ -66,7 +66,7 @@ class RepositoriesController extends Controller
             return sprintf('%s/%s - %s', $name, $repo, $year);
         }
 
-        return sprintf('%s/%s - %s %s', $name, $repo, Carbon::create($year, $month)->englishMonth, $year);
+        return sprintf('%s/%s - %s %s', $name, $repo, Carbon::create($year, $month)->format('F'), $year);
     }
 
     /**
@@ -92,7 +92,7 @@ class RepositoriesController extends Controller
             if ($month < 10) {
                 $month = sprintf('0%d', $month);
             }
-            $months[$month] = Carbon::create($year, $month)->englishMonth;
+            $months[$month] = Carbon::create($year, $month)->format('F');
         }
         return $months;
     }

@@ -49,7 +49,7 @@ class PullRequests extends Statistics
             'created' => $this->countTotals($created['total']),
             'closed' => $this->countTotals($closed['total']),
             'rejected' => (int)implode('', $this->getRejected([$this->countTotals($closed['total'])], [$this->countTotals($merged['total'])])),
-            'acceptance_rate' => implode('',$this->getAcceptanceRate([$this->countTotals($closed['total'])], [$this->countTotals($merged['total'])])),
+            'acceptance_rate' => implode('', $this->getAcceptanceRate([$this->countTotals($closed['total'])], [$this->countTotals($merged['total'])])),
         ];
         $data['datasets'] = $datasets;
         $data['_data'] = [
@@ -89,7 +89,7 @@ class PullRequests extends Statistics
             'created' => $this->countTotals($created[$repository]['total']),
             'closed' => $this->countTotals($closed[$repository]['total']),
             'rejected' => (int)implode('', $this->getRejected([$this->countTotals($closed[$repository]['total'])], [$this->countTotals($merged[$repository]['total'])])),
-            'acceptance_rate' => implode('',$this->getAcceptanceRate([$this->countTotals($closed[$repository]['total'])], [$this->countTotals($merged[$repository]['total'])])),
+            'acceptance_rate' => implode('', $this->getAcceptanceRate([$this->countTotals($closed[$repository]['total'])], [$this->countTotals($merged[$repository]['total'])])),
         ];
         $data['datasets'] = $datasets;
         $data['_data'] = [
@@ -106,7 +106,7 @@ class PullRequests extends Statistics
     {
         $this->reset();
         $data = [
-            'title' => sprintf('%s - %s %s', $repository, Carbon::create($year, $month)->englishMonth, $year),
+            'title' => sprintf('%s - %s %s', $repository, Carbon::create($year, $month)->format('F'), $year),
             'labels' => range(1, Carbon::create($year, $month)->daysInMonth),
             'generated' => Carbon::now(),
         ];
@@ -125,7 +125,7 @@ class PullRequests extends Statistics
             'created' => $this->countTotals($created[$repository]['months'][$month]),
             'closed' => $this->countTotals($closed[$repository]['months'][$month]),
             'rejected' => (int)implode('', $this->getRejected([$this->countTotals($closed[$repository]['months'][$month])], [$this->countTotals($merged[$repository]['months'][$month])])),
-            'acceptance_rate' => implode('',$this->getAcceptanceRate([$this->countTotals($closed[$repository]['months'][$month])], [$this->countTotals($merged[$repository]['months'][$month])])),
+            'acceptance_rate' => implode('', $this->getAcceptanceRate([$this->countTotals($closed[$repository]['months'][$month])], [$this->countTotals($merged[$repository]['months'][$month])])),
         ];
         $data['datasets'] = $datasets;
         $data['_data'] = [
