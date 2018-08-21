@@ -7,6 +7,7 @@ use App\Repositories;
 use App\Statistics;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Spatie\Crawler\Crawler;
 use Spatie\Sitemap\SitemapGenerator;
 use Symfony\Component\Console\Input\ArrayInput;
 
@@ -18,6 +19,9 @@ class Generate extends Command
     public function handle()
     {
         $this->output->title('Generate Sitemap');
-        SitemapGenerator::create(env('APP_URL'))->writeToFile('public/sitemap.xml');
+        SitemapGenerator::create(env('APP_URL'))
+            ->configureCrawler(function (Crawler $crawler) {
+            $crawler->ignoreRobots();
+        })->writeToFile('public/sitemap.xml');
     }
 }

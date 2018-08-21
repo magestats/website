@@ -62,16 +62,6 @@
         <div id="navbar" class="navbar navbar-inverse navbar-fixed-top navbar-collapse collapse">
             <div class="container">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown{{ Request::is('repositories/*') ? ' active' : null }}">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Repositories<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            @foreach (explode(',', env('MAGENTO_REPOS')) as $repo)
-                                <li{{ Request::is('repositories/' . $repo) ? ' class=active' : null }}><a
-                                            href="/repositories/{{ $repo }}">{{ $repo }}</a></li>
-                            @endforeach
-                        </ul>
-                    </li>
                     <li class="dropdown{{ Request::is('contributors/*') ? ' active' : null }}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Contributors<span class="caret"></span></a>
@@ -82,6 +72,17 @@
                             @endforeach
                         </ul>
                     </li>
+                    <li class="dropdown{{ Request::is('repositories/*') ? ' active' : null }}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Repositories<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            @foreach (explode(',', env('MAGENTO_REPOS')) as $repo)
+                                <li{{ Request::is('repositories/' . $repo) ? ' class=active' : null }}><a
+                                            href="/repositories/{{ $repo }}">{{ $repo }}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
+
                     <li class="dropdown{{ Request::is('reports/*') ? ' active' : null }}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Reports<span class="caret"></span></a>
