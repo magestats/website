@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="INDEX,FOLLOW"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="icon" type="image/png" href="{{ asset('images/magestats-icon-colored.png') }}"/>
+    <link rel="alternate" hreflang="en" href="{{ env('APP_URL') }}" />
     <meta name="HandheldFriendly" content="True">
     <meta name="description" content="@section('description', config('app.name', 'Magestats'))">
     <meta name="keywords" content="magestats, magento, statistics, github, open source, community, magento community, open source statistics, @yield('keywords', 'magestats.net')">

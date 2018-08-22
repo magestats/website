@@ -25,7 +25,7 @@
             </div>
             <div class="col-xs-12">
                 <p>The numbers may differ from those listed in the monthly <a
-                            href="https://www.youtube.com/channel/UCUsdK3NnJ0LqhNJCrJDdiug/featured">Community
+                            href="https://www.youtube.com/channel/UCUsdK3NnJ0LqhNJCrJDdiug/featured" rel="nofollow">Community
                         Engineering Hangouts</a>. The reason for this is that Magestats does not have access to
                     private or partner repositories of Magento. More information on <a href="/about">about Magestats</a>.</p>
             </div>
