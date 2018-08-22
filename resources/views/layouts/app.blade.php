@@ -30,6 +30,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
+    @if(!env('APP_DEBUG'))
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1020866-28"></script>
     <script>
@@ -39,6 +40,7 @@
 
         gtag('config', 'UA-1020866-28');
     </script>
+    @endif
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
