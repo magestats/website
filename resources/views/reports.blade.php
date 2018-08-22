@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('description')The numbers may differ from those listed in the monthly Community Engineering Hangouts. The reason for this is that Magestats does not have access to private or partner repositories of Magento.@endsection
+@if(!Request::is('*/' . $active_year))
+@section('meta')<link rel="canonical" href="{{ route('reports', [$active_year]) }}" />@endsection
+@endif
 @section('content')
     <div class="container content reports" id="app">
         <div class="row">

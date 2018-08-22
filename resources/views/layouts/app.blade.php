@@ -21,6 +21,7 @@
     <meta name="twitter:description" content="@yield('description', config('app.name', 'Magestats'))" />
     <meta name="twitter:url" content="{{ Request::url() }}" />
     <meta name="twitter:image" content="@yield('image', 'https://magestats.net/images/profile.png')" />
+    @yield('meta')
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

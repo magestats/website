@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@if(!Request::is('*/' . $active_year))
+@section('meta')<link rel="canonical" href="{{ route('contributors', [$active_year]) }}" />@endsection
+@endif
 @section('description')In {{ $active_year }}, a total of {{ $total }} individual contributors contributed across all Magento Community Projects.@endsection
 @section('content')
     <div class="container content" id="app">
