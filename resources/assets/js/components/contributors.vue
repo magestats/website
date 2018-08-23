@@ -31,9 +31,12 @@
                     <a :href="'https://github.com/' + contributor"><img :data-src="values.avatar_url"/></a>
                     <p class="center"><a :href="'https://github.com/' + contributor">{{ contributor }}</a></p>
                     <ul>
-                        <li>Merged: <span class="badge merged right">{{ values.merged }}</span></li>
-                        <li>Created: <span class="badge created right">{{ values.created }}</span></li>
-                        <li>Closed: <span class="badge closed right">{{ values.closed }}</span></li>
+                        <li title="Merged Pull Requests">Merged: <span class="badge merged right">{{ values.merged }}</span></li>
+                        <li title="Created Pull Requests">Created: <span class="badge created right">{{ values.created }}</span></li>
+                        <li title="Closed Pull Requests">Closed: <span class="badge closed right">{{ values.closed }}</span></li>
+                        <li v-if="values.rejected" title="Rejected Pull Requests">Rejected: <span class="badge rejected-dark-30 right">{{ values.rejected }}</span></li>
+                        <li v-if="!values.rejected" title="Rejected Pull Requests">Rejected: <span class="badge rejected-dark-30 right">0</span></li>
+                        <li v-if="values.acceptance_rate" title="Acceptance Rate">Acc. Rate: <span class="badge acceptance-rate right">{{ values.acceptance_rate }}</span></li>
                     </ul>
                 </div>
             </div>

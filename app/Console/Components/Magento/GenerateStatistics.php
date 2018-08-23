@@ -14,8 +14,13 @@ class GenerateStatistics extends Command
     const ARGUMENT_YEAR = 'year';
     const OPTION_ONLINE = 'online';
     const OPTION_ALL_MONTHS = 'all-months';
+    const OPTION_ONLY = 'only';
 
-    protected $signature = 'magento:generate:statistics {year=current} {--online} {--all-months}';
+    const SWITCH_CONTRIBUTORS = 'contributors';
+    const SWITCH_PULLREQUESTS = 'pullrequests';
+    const SWITCH_ISSUES = 'issues';
+
+    protected $signature = 'magento:generate:statistics {year=current} {--online} {--all-months} {--only=[contributors,pullrequests,issues]}';
     protected $description = 'Generate Statistics';
 
     public function handle(
@@ -26,12 +31,17 @@ class GenerateStatistics extends Command
     ) {
         $online = $this->input->getOption(self::OPTION_ONLINE);
         $allMonths = $this->input->getOption(self::OPTION_ALL_MONTHS);
+        $only = $this->input->getOption(self::OPTION_ONLY);
 
         if ($online) {
-            $this->output->title('Fetch Pull Requests');
-            $this->fetchPullRequests();
-            $this->output->title('Fetch Issues');
-            $this->fetchIssues();
+            if (stripos($only, self::SWITCH_PULLREQUESTS) !== false) {
+                $this->output->title('Fetch Pull Requests');
+                $this->fetchPullRequests();
+            }
+            if (stripos($only, self::SWITCH_ISSUES) !== false) {
+                $this->output->title('Fetch Issues');
+                $this->fetchIssues();
+            }
         }
 
         $year = $this->input->getArgument(self::ARGUMENT_YEAR);
@@ -42,28 +52,38 @@ class GenerateStatistics extends Command
 
         $this->output->title(sprintf('From: %s to: %s', Carbon::createFromDate($year)->firstOfYear(), Carbon::createFromDate($year)->lastOfYear()));
 
-        $this->output->text('Store contributors by year');
-        $contributors->storeContributors((int)$year);
+        if (stripos($only, self::SWITCH_CONTRIBUTORS) !== false) {
+            $this->output->text('Store contributors by year');
+            $contributors->storeContributors((int)$year);
+        }
 
-        $this->output->text('Store pull requests by year');
-        $pullRequests->storePullRequests((int)$year);
+        if (stripos($only, self::SWITCH_PULLREQUESTS) !== false) {
+            $this->output->text('Store pull requests by year');
+            $pullRequests->storePullRequests((int)$year);
+        }
 
-        $this->output->text('Store issues by year');
-        $issues->storeIssues((int)$year);
+        if (stripos($only, self::SWITCH_ISSUES) !== false) {
+            $this->output->text('Store issues by year');
+            $issues->storeIssues((int)$year);
+        }
 
         foreach ($publicRepos as $repository) {
             $repo = $repository['full_name'];
             if ((int)Carbon::createFromTimeString($repository['created'])->year > $year) {
                 continue;
             }
-            $this->output->text(sprintf('Store contributors for repo %s by year', $repo));
-            $contributors->storeContributorsByRepository($repo, (int)$year);
-
-            $this->output->text(sprintf('Store pull requests for repo %s by year', $repo));
-            $pullRequests->storePullRequestsByRepository($repo, (int)$year);
-
-            $this->output->text(sprintf('Store issues for repo %s by year', $repo));
-            $issues->storeIssuesByRepository($repo, (int)$year);
+            if (stripos($only, self::SWITCH_CONTRIBUTORS) !== false) {
+                $this->output->text(sprintf('Store contributors for repo %s by year', $repo));
+                $contributors->storeContributorsByRepository($repo, (int)$year);
+            }
+            if (stripos($only, self::SWITCH_PULLREQUESTS) !== false) {
+                $this->output->text(sprintf('Store pull requests for repo %s by year', $repo));
+                $pullRequests->storePullRequestsByRepository($repo, (int)$year);
+            }
+            if (stripos($only, self::SWITCH_ISSUES) !== false) {
+                $this->output->text(sprintf('Store issues for repo %s by year', $repo));
+                $issues->storeIssuesByRepository($repo, (int)$year);
+            }
 
             if ($allMonths) {
                 foreach (range(1, 12) as $month) {
@@ -80,24 +100,33 @@ class GenerateStatistics extends Command
                         )->timestamp) {
                         continue;
                     }
-                    $this->output->text(sprintf('Store contributors for repo %s by year and month %s', $repo, $month));
-                    $contributors->storeContributorsByRepositoryAndMonth($repo, (int)$month, (int)$year);
+                    if (stripos($only, self::SWITCH_CONTRIBUTORS) !== false) {
+                        $this->output->text(sprintf('Store contributors for repo %s by year and month %s', $repo, $month));
+                        $contributors->storeContributorsByRepositoryAndMonth($repo, (int)$month, (int)$year);
+                    }
+                    if (stripos($only, self::SWITCH_PULLREQUESTS) !== false) {
+                        $this->output->text(sprintf('Store pull requests for repo %s by year and month %s', $repo, $month));
+                        $pullRequests->storePullRequestsByRepositoryAndMonth($repo, (int)$month, (int)$year);
+                    }
 
-                    $this->output->text(sprintf('Store pull requests for repo %s by year and month %s', $repo, $month));
-                    $pullRequests->storePullRequestsByRepositoryAndMonth($repo, (int)$month, (int)$year);
-
-                    $this->output->text(sprintf('Store issues for repo %s by year and month %s', $repo, $month));
-                    $issues->storeIssuesByRepositoryAndMonth($repo, (int)$month, (int)$year);
+                    if (stripos($only, self::SWITCH_ISSUES) !== false) {
+                        $this->output->text(sprintf('Store issues for repo %s by year and month %s', $repo, $month));
+                        $issues->storeIssuesByRepositoryAndMonth($repo, (int)$month, (int)$year);
+                    }
                 }
             } else {
-                $this->output->text(sprintf('Store contributors for repo %s by year and month', $repo));
-                $contributors->storeContributorsByRepositoryAndMonth($repo, (int)date('n'), (int)$year);
-
-                $this->output->text(sprintf('Store pull requests for repo %s by year and month', $repo));
-                $pullRequests->storePullRequestsByRepositoryAndMonth($repo, (int)date('n'), (int)$year);
-
-                $this->output->text(sprintf('Store issues for repo %s by year and month', $repo));
-                $issues->storeIssuesByRepositoryAndMonth($repo, (int)date('n'), (int)$year);
+                if (stripos($only, self::SWITCH_CONTRIBUTORS) !== false) {
+                    $this->output->text(sprintf('Store contributors for repo %s by year and month', $repo));
+                    $contributors->storeContributorsByRepositoryAndMonth($repo, (int)date('n'), (int)$year);
+                }
+                if (stripos($only, self::SWITCH_PULLREQUESTS) !== false) {
+                    $this->output->text(sprintf('Store pull requests for repo %s by year and month', $repo));
+                    $pullRequests->storePullRequestsByRepositoryAndMonth($repo, (int)date('n'), (int)$year);
+                }
+                if (stripos($only, self::SWITCH_ISSUES) !== false) {
+                    $this->output->text(sprintf('Store issues for repo %s by year and month', $repo));
+                    $issues->storeIssuesByRepositoryAndMonth($repo, (int)date('n'), (int)$year);
+                }
             }
         }
         $this->output->writeln(sprintf('Memory usage: %s', $this->convert(memory_get_usage(true))));

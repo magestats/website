@@ -21,7 +21,7 @@ class Generate extends Command
         $this->output->title('Generate Sitemap');
         SitemapGenerator::create(env('APP_URL'))
             ->configureCrawler(function (Crawler $crawler) {
-            $crawler->ignoreRobots();
-        })->writeToFile('public/sitemap.xml');
+                $crawler->ignoreRobots();
+            })->writeToFile('public/sitemap.xml');
     }
 }
