@@ -3,13 +3,12 @@ declare(strict_types=1);
 
 namespace App\Console\Components\Magento;
 
+use App\Console\Components\AbstractCommand;
 use App\PullRequests;
-use Illuminate\Console\Command;
 use App\Services\GitHub\Api;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class FetchPullRequests extends Command
+class FetchPullRequests extends AbstractCommand
 {
     const OPTION_ALL = 'all';
     protected $signature = 'magento:fetch:pullrequests {--all}';
@@ -55,8 +54,10 @@ class FetchPullRequests extends Command
                     $pullRequests->store($data);
                 }
             } catch (\Exception $e) {
+                $this->output->writeln($this->getMemoryUsage());
                 $this->warn($e->getMessage());
             }
+            $this->output->writeln($this->getMemoryUsage());
         }
     }
 

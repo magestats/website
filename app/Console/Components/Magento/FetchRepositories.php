@@ -3,14 +3,11 @@ declare(strict_types=1);
 
 namespace App\Console\Components\Magento;
 
-use App\PullRequests;
+use App\Console\Components\AbstractCommand;
 use App\Repositories;
-use Illuminate\Console\Command;
 use App\Services\GitHub\Api;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 
-class FetchRepositories extends Command
+class FetchRepositories extends AbstractCommand
 {
     protected $signature = 'magento:fetch:repositories';
     protected $description = 'Fetch Repositories Information';
@@ -49,8 +46,10 @@ class FetchRepositories extends Command
                 ];
                 $repositories->store($data);
             } catch (\Exception $e) {
+                $this->output->writeln($this->getMemoryUsage());
                 $this->output->writeln(sprintf('<error>%s</error>', $e->getMessage()));
             }
+            $this->output->writeln($this->getMemoryUsage());
         }
     }
 

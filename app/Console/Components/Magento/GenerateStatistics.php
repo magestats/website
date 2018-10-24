@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace App\Console\Components\Magento;
 
+use App\Console\Components\AbstractCommand;
 use App\Repositories;
 use App\Statistics;
 use Carbon\Carbon;
-use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 
-class GenerateStatistics extends Command
+class GenerateStatistics extends AbstractCommand
 {
     const ARGUMENT_YEAR = 'year';
     const OPTION_ONLINE = 'online';
@@ -129,13 +129,7 @@ class GenerateStatistics extends Command
                 }
             }
         }
-        $this->output->writeln(sprintf('Memory usage: %s', $this->convert(memory_get_usage(true))));
-    }
-
-    private function convert(int $size)
-    {
-        $unit = array('b', 'kb', 'mb', 'gb', 'tb', 'pb');
-        return @round($size / pow(1024, ($i = floor(log($size, 1024)))), 2) . ' ' . $unit[$i];
+        $this->output->writeln($this->getMemoryUsage());
     }
 
     private function fetchPullRequests()

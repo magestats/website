@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace App\Console\Components\Magento;
 
+use App\Console\Components\AbstractCommand;
 use App\Issues;
-use Illuminate\Console\Command;
 use App\Services\GitHub\Api;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class FetchIssues extends Command
+class FetchIssues extends AbstractCommand
 {
     const OPTION_ALL = 'all';
     protected $signature = 'magento:fetch:issues {--all}';
@@ -51,8 +51,10 @@ class FetchIssues extends Command
                     $issues->store($data);
                 }
             } catch (\Exception $e) {
+                $this->output->writeln($this->getMemoryUsage());
                 $this->output->writeln(sprintf('<error>%s</error>', $e->getMessage()));
             }
+            $this->output->writeln($this->getMemoryUsage());
         }
     }
 

@@ -3,15 +3,11 @@ declare(strict_types=1);
 
 namespace App\Console\Components\Sitemap;
 
-use App\Repositories;
-use App\Statistics;
-use Carbon\Carbon;
-use Illuminate\Console\Command;
+use App\Console\Components\AbstractCommand;
 use Spatie\Crawler\Crawler;
 use Spatie\Sitemap\SitemapGenerator;
-use Symfony\Component\Console\Input\ArrayInput;
 
-class Generate extends Command
+class Generate extends AbstractCommand
 {
     protected $signature = 'sitemap:generate';
     protected $description = 'Generate Sitemap';
@@ -23,5 +19,6 @@ class Generate extends Command
             ->configureCrawler(function (Crawler $crawler) {
                 $crawler->ignoreRobots();
             })->writeToFile('public/sitemap.xml');
+        $this->output->writeln($this->getMemoryUsage());
     }
 }
