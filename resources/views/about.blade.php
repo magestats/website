@@ -18,10 +18,13 @@
         <p>If you think there is a statistic missing or you have an idea to improve <strong>Magestats</strong> go to the issues section on <a href="https://github.com/magestats/ideas/issues" rel="nofollow">github.com/magestats/ideas</a> and check if anyone else had the same idea as you. If not <a href="https://github.com/magestats/ideas/issues/new" rel="nofollow">create a new issue here</a> and describe your idea.</p>
 
         <h2>Who's behind Magestats?</h2>
-        <p><strong>Magestats</strong> is created by <a href="https://github.com/mhauri" rel="nofollow">Marcel Hauri</a>, Magento 2 <a href="https://magento.com/magento-contributors#/community-maintainers" rel="nofollow">Core</a> & <a href="https://github.com/orgs/magento/teams/devdocs-maintainers/members" rel="nofollow">Devdocs</a> Community Maintainer.</p>
+        <p><strong>Magestats</strong> is created by <a href="https://github.com/mhauri" rel="nofollow">Marcel Hauri</a>, a <a href="https://magento.com/magento-contributors#/community-maintainers" rel="nofollow">Magento Community Maintainer</a> and Deputy Team Leader Internet at <a href="https://www.staempfli.com/en/internet/" rel="nofollow">Stämpfli AG</a>.</p>
 
         <h2>How can I support Magestats?</h2>
         <p>Well, first of all you can spread the word about <strong>Magestats</strong>, share it on your prefered social media channels, talk about it and so on. <br />If you want to support <strong>Magestats</strong> with a donation you can do it with <a href="https://www.paypal.me/mhauri" rel="nofollow">PayPal</a> or on <a href="https://www.patreon.com/mhauri" rel="nofollow">Patreon</a>.</p>
+
+        <h2>Special Thanks</h2>
+        <p>A special thanks goes to <a href="https://maxcluster.de/" rel="nofollow">Maxcluster</a> who supports Magestats with free hosting.</p>
 
     </div>
 @endsection

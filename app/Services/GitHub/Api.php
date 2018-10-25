@@ -12,6 +12,7 @@ class Api
 {
     const GITHUB_API_RESULT_UPDATED_AT = 'updated_at';
     const GITHUB_API_RESULT_DATA = 'data';
+    const GITHUB_API_PER_PAGE = 100;
 
     /**
      * @var Client
@@ -42,7 +43,7 @@ class Api
      */
     public function fetchIssues(string $userName, string $repoName, bool $all = false): Collection
     {
-        return collect($this->fetchResults('issue', 'all', [$userName, $repoName, ['state' => 'all', 'per_page' => 100, 'sort' => 'updated', 'direction' => 'desc']], $all));
+        return collect($this->fetchResults('issue', 'all', [$userName, $repoName, ['state' => 'all', 'per_page' => self::GITHUB_API_PER_PAGE, 'sort' => 'updated', 'direction' => 'desc']], $all));
     }
 
     /**
@@ -86,7 +87,7 @@ class Api
      */
     public function fetchPullRequests(string $userName, string $repoName, bool $all = false): Collection
     {
-        return collect($this->fetchResults('pull_request', 'all', [$userName, $repoName, ['state' => 'all', 'per_page' => 100, 'sort' => 'updated', 'direction' => 'desc']], $all));
+        return collect($this->fetchResults('pull_request', 'all', [$userName, $repoName, ['state' => 'all', 'per_page' => self::GITHUB_API_PER_PAGE, 'sort' => 'updated', 'direction' => 'desc']], $all));
     }
 
     /**
