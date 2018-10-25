@@ -24,7 +24,7 @@
         <p>Well, first of all you can spread the word about <strong>Magestats</strong>, share it on your prefered social media channels, talk about it and so on. <br />If you want to support <strong>Magestats</strong> with a donation you can do it with <a href="https://www.paypal.me/mhauri" rel="nofollow">PayPal</a> or on <a href="https://www.patreon.com/mhauri" rel="nofollow">Patreon</a>.</p>
 
         <h2>Special Thanks</h2>
-        <p>A special thanks goes to <a href="https://maxcluster.de/" rel="nofollow">Maxcluster</a> who supports Magestats with free hosting.</p>
+        <p>A special thanks goes to <a href="https://maxcluster.de/" rel="nofollow">maxcluster</a> who supports Magestats with free hosting.</p>
 
     </div>
 @endsection
