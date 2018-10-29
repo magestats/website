@@ -109,6 +109,18 @@ strong {
 .btn-lg {
   font-weight: 300;
 }
+
+.label {
+  &-closed {
+    background-color: #cb2431;
+  }
+  &-open {
+    background-color: #2cbe4e;
+  }
+  &-merged {
+    background-color: #6f42c1;
+  }
+}
 #back-to-top {
   display: none;
   position: fixed;
