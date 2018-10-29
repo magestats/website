@@ -25,10 +25,6 @@ class ContributorsController extends Controller
 
     public function byUsername(string $name)
     {
-        $data = [];
-        $issues = Issues::whereRaw('LOWER(author) = ?', strtolower($name))->orderBy('created', 'DESC')->get()->toArray();
-        $pullRequests = PullRequests::whereRaw('LOWER(author) = ?', strtolower($name))->orderBy('created', 'DESC')->get()->toArray();
-
         $data = array_merge($data, $this->getData('pull_requests', $pullRequests));
         $data = array_merge($data, $this->getData('issues', $issues));
 

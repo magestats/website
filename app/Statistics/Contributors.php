@@ -9,6 +9,7 @@ use Carbon\Carbon;
 class Contributors extends Statistics
 {
     const FILENAME = 'contributors';
+    const GENERATOR = 'https://magestats.net/';
     /**
      * @var array
      */
@@ -25,11 +26,12 @@ class Contributors extends Statistics
     public function storeContributors(int $year)
     {
         $data = [
-            'generator' => 'https://magestats.net/',
+            'generator' => self::GENERATOR,
             'title' => $year,
             'generated' => Carbon::now(),
         ];
         $contributors = $this->fetchContributorsByYear($year);
+        $this->storeContributorDetails($year, $contributors['total']);
         $data['contributors'] = $this->getSortedContributors($contributors['total']);
         $this->storeDataByYear(self::FILENAME, $year, $data);
     }
@@ -41,7 +43,7 @@ class Contributors extends Statistics
     public function storeContributorsByRepository(string $repository, int $year)
     {
         $data = [
-            'generator' => 'https://magestats.net/',
+            'generator' => self::GENERATOR,
             'title' => sprintf('%s - %s', $repository, $year),
             'generated' => Carbon::now(),
         ];
@@ -60,7 +62,7 @@ class Contributors extends Statistics
     public function storeContributorsByRepositoryAndMonth(string $repository, int $month, int $year)
     {
         $data = [
-            'generator' => 'https://magestats.net/',
+            'generator' => self::GENERATOR,
             'title' => sprintf('%s - %s %s', $repository, Carbon::create($year, $month)->format('F'), $year),
             'generated' => Carbon::now(),
         ];
@@ -77,7 +79,7 @@ class Contributors extends Statistics
             $result = $this->pullRequests
                 ->where('created', '>', Carbon::createFromDate($year)->firstOfYear())
                 ->where('created', '<', Carbon::createFromDate($year)->lastOfYear())
-                ->orderBy('author', 'ASC')
+                ->orderBy('created', 'DESC')
                 ->get()
                 ->toArray();
 
@@ -91,6 +93,8 @@ class Contributors extends Statistics
                 $total[$item['author']]['closed'] ?? $total[$item['author']]['closed'] = 0;
                 $total[$item['author']]['merged'] ?? $total[$item['author']]['merged'] = 0;
                 $total[$item['author']]['rejected'] ?? $total[$item['author']]['rejected'] = 0;
+                $total[$item['author']]['acceptance_rate'] ?? $total[$item['author']]['acceptance_rate'] = 0;
+                $total[$item['author']]['_pull_requests'] ?? $total[$item['author']]['_pull_requests'] = [];
                 $total[$item['author']]['created']++;
 
 
@@ -129,6 +133,13 @@ class Contributors extends Statistics
 
                 $total[$item['author']]['rejected'] = $this->getRejected([$total[$item['author']]['closed']], [$total[$item['author']]['merged']])[0];
                 $total[$item['author']]['acceptance_rate'] = $this->getAcceptanceRate([$total[$item['author']]['closed']], [$total[$item['author']]['merged']])[0];
+                $total[$item['author']]['_pull_requests'][$item['number']] = [
+                    'created' => $item['created'],
+                    'html_url' => $item['html_url'],
+                    'repo' => $item['repo'],
+                    'state' => (isset($item['merged'])) ? 'merged' : $item['state'],
+                    'title' => $item['title']
+                ];
 
                 $byRepo[$item['repo']][$item['author']]['rejected'] = $this->getRejected([$byRepo[$item['repo']][$item['author']]['closed']], [$byRepo[$item['repo']][$item['author']]['merged']])[0];
                 $byRepo[$item['repo']][$item['author']]['acceptance_rate'] = $this->getAcceptanceRate([$byRepo[$item['repo']][$item['author']]['closed']], [$byRepo[$item['repo']][$item['author']]['merged']])[0];
@@ -167,5 +178,37 @@ class Contributors extends Statistics
             }
         }
         return $this->authors[$author];
+    }
+
+    private function storeContributorDetails(int $year, array &$data)
+    {
+        foreach ($data as $author => $row) {
+            $issuesData = [];
+            $issues = \App\Issues::select(
+                [
+                    'number',
+                    'created',
+                    'html_url',
+                    'repo',
+                    'state',
+                    'title'
+                ]
+            )
+                ->where('author', $author)
+                ->orderBy('created', 'DESC')
+                ->get()
+                ->toArray();
+
+            foreach ($issues as $issue) {
+                $item = $issue;
+                unset($item['number']);
+                $issuesData[$issue['number']] = $item;
+            }
+
+            $row['_issues'] = $issuesData;
+
+            $this->storeDataByYear(sprintf('%s/%s', self::FILENAME, strtolower($author)), $year, $row);
+            unset($data[$author]['_pull_requests']);
+        }
     }
 }
