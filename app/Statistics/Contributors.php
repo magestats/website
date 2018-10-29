@@ -89,6 +89,7 @@ class Contributors extends Statistics
             foreach ($result as $item) {
                 $month = Carbon::createFromTimeString($item['created'])->month;
                 $total[$item['author']]['avatar_url'] = $this->getAvatarUrl($item['author'], $item['meta']);
+                $total[$item['author']]['author'] = $item['author'];
                 $total[$item['author']]['created'] ?? $total[$item['author']]['created'] = 0;
                 $total[$item['author']]['closed'] ?? $total[$item['author']]['closed'] = 0;
                 $total[$item['author']]['merged'] ?? $total[$item['author']]['merged'] = 0;
@@ -135,6 +136,7 @@ class Contributors extends Statistics
                 $total[$item['author']]['acceptance_rate'] = $this->getAcceptanceRate([$total[$item['author']]['closed']], [$total[$item['author']]['merged']])[0];
                 $total[$item['author']]['_pull_requests'][$item['number']] = [
                     'created' => $item['created'],
+                    'author' => $item['author'],
                     'html_url' => $item['html_url'],
                     'repo' => $item['repo'],
                     'state' => (isset($item['merged'])) ? 'merged' : $item['state'],
@@ -195,6 +197,8 @@ class Contributors extends Statistics
                 ]
             )
                 ->where('author', $author)
+                ->where('created', '>', Carbon::createFromDate($year)->firstOfYear())
+                ->where('created', '<', Carbon::createFromDate($year)->lastOfYear())
                 ->orderBy('created', 'DESC')
                 ->get()
                 ->toArray();

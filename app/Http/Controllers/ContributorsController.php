@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Issues;
 use App\PullRequests;
+use Illuminate\Support\Facades\Storage;
 
 class ContributorsController extends Controller
 {
@@ -25,11 +26,21 @@ class ContributorsController extends Controller
 
     public function byUsername(string $name)
     {
-        $data = array_merge($data, $this->getData('pull_requests', $pullRequests));
-        $data = array_merge($data, $this->getData('issues', $issues));
-
+        $avatar = '';
+        $author = $name;
+        $data = [];
+        foreach (range(2011, date('Y')) as $year) {
+            if (Storage::exists(sprintf('public/%d/%s.json', $year, sprintf('contributors/%s', strtolower($name))))) {
+                $data[$year] = $this->getJsonFile($year, sprintf('contributors/%s', strtolower($name)));
+                $avatar = $data[$year]->avatar_url;
+                $author = $data[$year]->author;
+            }
+        }
+        krsort($data);
         return view('contributor')->with([
-            'title' => $name,
+            'title' => $author,
+            'author' => $author,
+            'avatar' => $avatar,
             'data' => $data
         ]);
     }

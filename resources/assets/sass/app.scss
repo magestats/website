@@ -287,6 +287,23 @@ strong {
     }
   }
 }
+
+.contributor {
+  .avatar,
+  .title {
+    display: inline-block;
+  }
+  .avatar {
+    display: inline-block;
+    img {
+      width: 50px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      margin-right: 15px;
+    }
+  }
+}
 .contributors {
   margin-top: 20px;
   .panel {
