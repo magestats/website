@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('image'){{$avatar}}@endsection
+@section('description')Magento Contributor Statistics for: {{ $author }}@endsection
 @section('content')
     <div class="container content contributor">
         <div class="row">

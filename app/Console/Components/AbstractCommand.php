@@ -5,7 +5,6 @@ namespace App\Console\Components;
 
 use Illuminate\Console\Command;
 
-
 abstract class AbstractCommand extends Command
 {
     /**

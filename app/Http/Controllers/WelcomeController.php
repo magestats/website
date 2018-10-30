@@ -6,7 +6,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $year = 2018;
+        $year = getenv('WELCOME_YEAR');
         $pullRequests = $this->getJsonFile($year, 'pullrequests');
         $issues = $this->getJsonFile($year, 'issues');
         $contributors = $this->getJsonFile($year, 'contributors');
