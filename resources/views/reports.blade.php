@@ -61,7 +61,6 @@
                                     @endif
                                     <td>{{ $value }}</td>
                                 @endforeach
-
                                 <td class="{{ str_replace(' ','-', strtolower($label)) }}-light-10">{{ $total[str_replace(' ','_', strtolower($label))] }}</td>
                             </tr>
                         @endforeach

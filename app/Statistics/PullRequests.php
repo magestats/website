@@ -37,6 +37,7 @@ class PullRequests extends Statistics
         $created = $this->fetchCreatedPullRequestsByYear($year);
         $closed = $this->fetchClosedPullRequestsByYear($year);
         $merged = $this->fetchMergedPullRequestsByYear($year);
+        $firstTimeContributors = $this->fetchFirstTimeContributorsYear($year);
 
         $datasets = [
             $this->getDataset('Merged', $merged['total'], $this->mergedColor, 'line'),
@@ -50,6 +51,7 @@ class PullRequests extends Statistics
             'closed' => $this->countTotals($closed['total']),
             'rejected' => (int)implode('', $this->getRejected([$this->countTotals($closed['total'])], [$this->countTotals($merged['total'])])),
             'acceptance_rate' => implode('', $this->getAcceptanceRate([$this->countTotals($closed['total'])], [$this->countTotals($merged['total'])])),
+            'first_time_contributors' => $this->countTotals($firstTimeContributors['total']),
         ];
         $data['datasets'] = $datasets;
         $data['_data'] = [
@@ -58,6 +60,7 @@ class PullRequests extends Statistics
             'Closed' => $closed['total'],
             'Rejected' => $this->getRejected($closed['total'], $merged['total']),
             'Acceptance Rate' => $this->getAcceptanceRate($closed['total'], $merged['total']),
+            'First Time Contributors' => $firstTimeContributors['total']
         ];
         $this->storeDataByYear(self::FILENAME, $year, $data);
     }
@@ -195,6 +198,22 @@ class PullRequests extends Statistics
             $data[$item['repo']]['total'][$month]++;
             $data[$item['repo']]['months'][$month][$day]++;
             $data['total'][$month]++;
+        }
+        return $data;
+    }
+
+    private function fetchFirstTimeContributorsYear(int $year): array
+    {
+        $data = $this->getRangeArray($year);
+        $result = $this->contributors
+            ->where('first_contribution', '>', Carbon::createFromDate($year)->firstOfYear())
+            ->where('first_contribution', '<', Carbon::createFromDate($year)->lastOfYear())
+            ->orderBy('first_contribution', 'ASC')
+            ->get()
+            ->toArray();
+
+        foreach ($result as $item) {
+            $data['total'][Carbon::createFromTimestamp(strtotime($item['first_contribution']))->month]++;
         }
         return $data;
     }

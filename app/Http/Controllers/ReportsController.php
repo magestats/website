@@ -19,7 +19,7 @@ class ReportsController extends Controller
                 'title' => $this->getTitle('Reports for ', $year),
                 'active_year' => $year,
                 'pullrequests' => $this->getJsonFile($year, 'pullrequests'),
-                'issues' => $this->getJsonFile($year, 'issues')
+                'issues' => $this->getJsonFile($year, 'issues'),
             ]
         );
     }

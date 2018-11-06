@@ -37,12 +37,15 @@ class ContributorsController extends Controller
             }
         }
         krsort($data);
-        return view('contributor')->with([
-            'title' => $author,
-            'author' => $author,
-            'avatar' => $avatar,
-            'data' => $data
-        ]);
+        if ($data) {
+            return view('contributor')->with([
+                'title' => $author,
+                'author' => $author,
+                'avatar' => $avatar,
+                'data' => $data
+            ]);
+        }
+        return abort(404);
     }
 
     private function getTitle(string $name, string $year)
