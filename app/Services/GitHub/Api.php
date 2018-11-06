@@ -59,6 +59,16 @@ class Api
 
     /**
      * @param string $userName
+     * @param bool $all
+     * @return Collection
+     */
+    public function fetchContributor(string $userName, bool $all = false): Collection
+    {
+        return collect($this->fetchResults('user', 'show', [$userName], $all));
+    }
+
+    /**
+     * @param string $userName
      * @param string $repoName
      * @param bool $all
      * @return Collection

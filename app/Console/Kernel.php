@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        \App\Console\Components\Magento\FetchContributors::class,
         \App\Console\Components\Magento\FetchPullRequests::class,
         \App\Console\Components\Magento\FetchRepositories::class,
         \App\Console\Components\Magento\FetchIssues::class,
