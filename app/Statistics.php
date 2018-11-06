@@ -23,6 +23,10 @@ class Statistics
      */
     protected $issues;
     /**
+     * @var Contributors
+     */
+    protected $contributors;
+    /**
      * @var array
      */
     protected $createdColor = [159, 215, 203];
@@ -48,10 +52,14 @@ class Statistics
      * @param PullRequests $pullRequests
      * @param Issues $issues
      */
-    public function __construct(PullRequests $pullRequests, Issues $issues)
-    {
+    public function __construct(
+        PullRequests $pullRequests,
+        Issues $issues,
+        Contributors $contributors
+    ) {
         $this->pullRequests = $pullRequests;
         $this->issues = $issues;
+        $this->contributors = $contributors;
     }
 
     /**

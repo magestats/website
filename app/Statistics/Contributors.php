@@ -83,6 +83,9 @@ class Contributors extends Statistics
                 ->get()
                 ->toArray();
 
+
+            $firstTimeContributors = $this->getFirstTimeContributorsByYear($year);
+
             $total = [];
             $byRepo = [];
             $byRepoAndMonth = [];
@@ -95,6 +98,7 @@ class Contributors extends Statistics
                 $total[$item['author']]['merged'] ?? $total[$item['author']]['merged'] = 0;
                 $total[$item['author']]['rejected'] ?? $total[$item['author']]['rejected'] = 0;
                 $total[$item['author']]['acceptance_rate'] ?? $total[$item['author']]['acceptance_rate'] = 0;
+                $total[$item['author']]['first_time'] ?? $total[$item['author']]['first_time'] = isset($firstTimeContributors[$item['author']]);
                 $total[$item['author']]['_pull_requests'] ?? $total[$item['author']]['_pull_requests'] = [];
                 $total[$item['author']]['created']++;
 
@@ -214,5 +218,23 @@ class Contributors extends Statistics
             $this->storeDataByYear(sprintf('%s/%s', self::FILENAME, strtolower($author)), $year, $row);
             unset($data[$author]['_pull_requests']);
         }
+    }
+
+    /**
+     * @param int $year
+     * @return array
+     */
+    private function getFirstTimeContributorsByYear(int $year): array
+    {
+        $contributors = $this->contributors
+            ->where('first_contribution', '>', Carbon::createFromDate($year)->firstOfYear())
+            ->where('first_contribution', '<', Carbon::createFromDate($year)->lastOfYear())
+            ->orderBy('first_contribution', 'DESC')
+            ->get()
+            ->toArray();
+        foreach ($contributors as $contributor) {
+            $data[$contributor['author']] = $contributor['first_contribution'];
+        }
+        return $data;
     }
 }
