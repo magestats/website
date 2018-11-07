@@ -48,6 +48,13 @@ class Generate extends AbstractCommand
                 $sitemap->add(Url::create($this->getUrl($appUrl, ['repositories', $fileParts[1], $fileParts[2], $fileParts[0]]))->setPriority(0.8));
             } elseif (isset($fileParts[2])) {
                 if ($fileParts[1] === 'contributors') {
+                    if(in_array($fileParts[2], range(1,12))) {
+                        if ($fileParts[2] <= 9) {
+                            $fileParts[2] = sprintf('0%s', $fileParts[2]);
+                        }
+                        $sitemap->add(Url::create($this->getUrl($appUrl, [$fileParts[1], $fileParts[0], $fileParts[2]]))->setPriority(0.8));
+                        continue;
+                    }
                     $contributors[] = $fileParts[2];
                 }
             } elseif (isset($fileParts[1])) {
