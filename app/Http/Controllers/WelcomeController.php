@@ -15,7 +15,8 @@ class WelcomeController extends Controller
             'year' => $year,
             'pullrequests' => $pullRequests->total,
             'issues' => $issues->total,
-            'contributors' => \count((array)$contributors->contributors)
+            'contributors' => \count((array)$contributors->contributors),
+            'first_time_contributors' => $pullRequests->total->first_time_contributors,
         ]);
     }
 }

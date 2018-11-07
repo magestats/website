@@ -55,6 +55,13 @@ class GenerateStatistics extends AbstractCommand
         if (stripos($only, self::SWITCH_CONTRIBUTORS) !== false) {
             $this->output->text('Store contributors by year');
             $contributors->storeContributors((int)$year);
+            if ($allMonths) {
+                foreach (range(1, 12) as $month) {
+                    $contributors->storeContributorsByMonth((int)$year, $month);
+                }
+            } else {
+                $contributors->storeContributorsByMonth((int)$year, (int)date('n'));
+            }
         }
 
         if (stripos($only, self::SWITCH_PULLREQUESTS) !== false) {

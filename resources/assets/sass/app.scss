@@ -120,6 +120,9 @@ strong {
   &-merged {
     background-color: #6f42c1;
   }
+  &-first-time-contributors {
+    background-color: $status-first-time-contributors-color;
+  }
 }
 #back-to-top {
   display: none;
@@ -283,6 +286,44 @@ strong {
       }
       &-10 {
         background-color: darken($status-acceptance-rate-color, 10);
+      }
+    }
+  }
+  .first-time-contributors {
+    background-color: $status-first-time-contributors-color;
+    &-light {
+      &-20 {
+        background-color: lighten($status-first-time-contributors-color, 20);
+      }
+      &-10 {
+        background-color: lighten($status-first-time-contributors-color, 10);
+      }
+    }
+    &-dark {
+      &-20 {
+        background-color: darken($status-first-time-contributors-color, 20);
+      }
+      &-10 {
+        background-color: darken($status-first-time-contributors-color, 10);
+      }
+    }
+  }
+  .total-contributors {
+    background-color: $status-total-contributors-color;
+    &-light {
+      &-20 {
+        background-color: lighten($status-total-contributors-color, 20);
+      }
+      &-10 {
+        background-color: lighten($status-total-contributors-color, 10);
+      }
+    }
+    &-dark {
+      &-20 {
+        background-color: darken($status-total-contributors-color, 20);
+      }
+      &-10 {
+        background-color: darken($status-total-contributors-color, 10);
       }
     }
   }

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Repositories;
+use App\Utils\Date;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Request;
 
 class RepositoriesController extends Controller
 {
+    use Date;
+
     public function index(Repositories $repositories, string $name, string $repo, string $year = '', string $month = '')
     {
         $data = $repositories->where('owner', $name)->where('name', $repo)->first()->toArray();
@@ -67,33 +70,5 @@ class RepositoriesController extends Controller
         }
 
         return sprintf('%s/%s - %s %s', $name, $repo, Carbon::create($year, $month)->format('F'), $year);
-    }
-
-    /**
-     * @param int $year
-     * @param int $createdYear
-     * @param int $createdMonth
-     * @return array
-     */
-    private function getMonthRange(int $year, int $createdYear, int $createdMonth): array
-    {
-        $minMonth = 1;
-        $maxMonth= 12;
-        if ($year === (int) date('Y')) {
-            $maxMonth = date('m');
-        }
-
-        if ($year === $createdYear) {
-            $minMonth = $createdMonth;
-        }
-
-        $months = [];
-        foreach (range($minMonth, $maxMonth) as $month) {
-            if ($month < 10) {
-                $month = sprintf('0%d', $month);
-            }
-            $months[$month] = Carbon::create($year, $month)->format('F');
-        }
-        return $months;
     }
 }

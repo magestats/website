@@ -2,22 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Issues;
-use App\PullRequests;
+use App\Utils\Date;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class ContributorsController extends Controller
 {
-    public function index(string $year = '')
+    use Date;
+
+    public function index(string $year = '', string $month = '')
     {
+        $originalMonth = $month;
         if (!$year) {
             $year = date('Y');
         }
+        if (!$month) {
+            $month = date('m');
+        }
         if ((int)$year >= 2011 && (int)$year <= (int)date('Y')) {
-            $contributors = $this->getJsonFile($year, 'contributors');
+            if ($originalMonth) {
+                $contributors = $this->getJsonFile($year, sprintf('contributors/%s', (int)$originalMonth));
+            } else {
+                $contributors = $this->getJsonFile($year, 'contributors');
+            }
+
+
             return view('contributors')->with([
                 'title' => $this->getTitle('Contributors in ', $year),
-                'active_year' => (int)$year,
+                'active_year' => $year ?? date('Y'),
+                'active_month' => $month ?? date('m'),
+                'active_english_month' => Carbon::create($year, $month)->format('F'),
+                'month_selector' => $this->getValidatedMonthRange((int)$year),
                 'total' => \count((array)$contributors->contributors)
             ]);
         }
@@ -53,22 +68,14 @@ class ContributorsController extends Controller
         return sprintf('%s %s', $name, $year);
     }
 
-    private function getData(string $type, array $dataSet)
+    private function getValidatedMonthRange(int $year): array
     {
-        $data = [];
-        foreach ($dataSet as $row) {
-            $state = $row['state'];
-            if (isset($row['merged'])) {
-                $state = 'merged';
+        $monthRange = $this->getMonthRange($year, 2011, 12);
+        foreach ($monthRange as $month => $name) {
+            if (!Storage::exists(sprintf('public/%d/%s.json', $year, sprintf('contributors/%s', (int)$month)))) {
+                unset($monthRange[$month]);
             }
-            $data[$type][date('Y', strtotime($row['created']))][$row['number']] = [
-                'created' => $row['created'],
-                'repo' => $row['repo'],
-                'state' => $state,
-                'title' => $row['title'],
-                'url' => $row['html_url']
-            ];
         }
-        return $data;
+        return $monthRange;
     }
 }

@@ -75,7 +75,7 @@ class FetchContributors extends AbstractCommand
     {
         $data = [];
         $result = $contributors->select(['author', 'first_contribution'])->get()->toArray();
-        if(\count($result)) {
+        if (\count($result)) {
             foreach ($result as $item) {
                 $data[$item['author']] = $item['first_contribution'];
             }

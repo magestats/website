@@ -34,10 +34,11 @@ class PullRequests extends Statistics
             'labels' => $this->getMonthRange($year),
             'generated' => Carbon::now(),
         ];
-        $created = $this->fetchCreatedPullRequestsByYear($year);
-        $closed = $this->fetchClosedPullRequestsByYear($year);
-        $merged = $this->fetchMergedPullRequestsByYear($year);
-        $firstTimeContributors = $this->fetchFirstTimeContributorsYear($year);
+        $created = $this->getCreatedPullRequestsByYear($year);
+        $closed = $this->getClosedPullRequestsByYear($year);
+        $merged = $this->getMergedPullRequestsByYear($year);
+        $firstTimeContributors = $this->getFirstTimeContributorsYear($year);
+        $totalContributors = $this->getTotalContributorsByYearAndMonth($year);
 
         $datasets = [
             $this->getDataset('Merged', $merged['total'], $this->mergedColor, 'line'),
@@ -52,6 +53,7 @@ class PullRequests extends Statistics
             'rejected' => (int)implode('', $this->getRejected([$this->countTotals($closed['total'])], [$this->countTotals($merged['total'])])),
             'acceptance_rate' => implode('', $this->getAcceptanceRate([$this->countTotals($closed['total'])], [$this->countTotals($merged['total'])])),
             'first_time_contributors' => $this->countTotals($firstTimeContributors['total']),
+            'total_contributors' => $this->countTotals($totalContributors['contributors']['total']),
         ];
         $data['datasets'] = $datasets;
         $data['_data'] = [
@@ -60,7 +62,8 @@ class PullRequests extends Statistics
             'Closed' => $closed['total'],
             'Rejected' => $this->getRejected($closed['total'], $merged['total']),
             'Acceptance Rate' => $this->getAcceptanceRate($closed['total'], $merged['total']),
-            'First Time Contributors' => $firstTimeContributors['total']
+            'First Time Contributors' => $firstTimeContributors['total'],
+            'Total Contributors' => $totalContributors['total'],
         ];
         $this->storeDataByYear(self::FILENAME, $year, $data);
     }
@@ -77,9 +80,9 @@ class PullRequests extends Statistics
             'labels' => $this->getMonthRange($year),
             'generated' => Carbon::now(),
         ];
-        $created = $this->fetchCreatedPullRequestsByYear($year);
-        $closed = $this->fetchClosedPullRequestsByYear($year);
-        $merged = $this->fetchMergedPullRequestsByYear($year);
+        $created = $this->getCreatedPullRequestsByYear($year);
+        $closed = $this->getClosedPullRequestsByYear($year);
+        $merged = $this->getMergedPullRequestsByYear($year);
 
         $datasets = [
             $this->getDataset('Merged', $merged[$repository]['total'], $this->mergedColor, 'line'),
@@ -113,9 +116,9 @@ class PullRequests extends Statistics
             'labels' => range(1, Carbon::create($year, $month)->daysInMonth),
             'generated' => Carbon::now(),
         ];
-        $created = $this->fetchCreatedPullRequestsByYear($year);
-        $closed = $this->fetchClosedPullRequestsByYear($year);
-        $merged = $this->fetchMergedPullRequestsByYear($year);
+        $created = $this->getCreatedPullRequestsByYear($year);
+        $closed = $this->getClosedPullRequestsByYear($year);
+        $merged = $this->getMergedPullRequestsByYear($year);
 
         $datasets = [
             $this->getDataset('Merged', $merged[$repository]['months'][$month], $this->mergedColor, 'line'),
@@ -145,10 +148,10 @@ class PullRequests extends Statistics
      * @param int $year
      * @return array
      */
-    private function fetchCreatedPullRequestsByYear(int $year): array
+    private function getCreatedPullRequestsByYear(int $year): array
     {
         if (!$this->created) {
-            $this->created = $this->fetchPullRequestsByStatusAndYear(parent::STATUS_CREATED, $year);
+            $this->created = $this->getPullRequestsByStatusAndYear(parent::STATUS_CREATED, $year);
         }
         return $this->created;
     }
@@ -157,10 +160,10 @@ class PullRequests extends Statistics
      * @param int $year
      * @return array
      */
-    private function fetchClosedPullRequestsByYear(int $year): array
+    private function getClosedPullRequestsByYear(int $year): array
     {
         if (!$this->closed) {
-            $this->closed = $this->fetchPullRequestsByStatusAndYear(parent::STATUS_CLOSED, $year);
+            $this->closed = $this->getPullRequestsByStatusAndYear(parent::STATUS_CLOSED, $year);
         }
         return $this->closed;
     }
@@ -169,10 +172,10 @@ class PullRequests extends Statistics
      * @param int $year
      * @return array
      */
-    private function fetchMergedPullRequestsByYear(int $year): array
+    private function getMergedPullRequestsByYear(int $year): array
     {
         if (!$this->merged) {
-            $this->merged = $this->fetchPullRequestsByStatusAndYear(parent::STATUS_MERGED, $year);
+            $this->merged = $this->getPullRequestsByStatusAndYear(parent::STATUS_MERGED, $year);
         }
         return $this->merged;
     }
@@ -182,16 +185,10 @@ class PullRequests extends Statistics
      * @param int $year
      * @return array
      */
-    private function fetchPullRequestsByStatusAndYear(string $status, int $year): array
+    private function getPullRequestsByStatusAndYear(string $status, int $year): array
     {
         $data = $this->getRangeArray($year);
-        $result = $this->pullRequests
-            ->where($status, '>', Carbon::createFromDate($year)->firstOfYear())
-            ->where($status, '<', Carbon::createFromDate($year)->lastOfYear())
-            ->orderBy($status, 'ASC')
-            ->get()
-            ->toArray();
-
+        $result = $this->fetchPullRequestsByStatusAndYear($status, $year);
         foreach ($result as $item) {
             $month = Carbon::createFromTimestamp(strtotime($item[$status]))->month;
             $day = Carbon::createFromTimestamp(strtotime($item[$status]))->day;
@@ -202,7 +199,26 @@ class PullRequests extends Statistics
         return $data;
     }
 
-    private function fetchFirstTimeContributorsYear(int $year): array
+    /**
+     * @param string $status
+     * @param int $year
+     * @return array
+     */
+    private function fetchPullRequestsByStatusAndYear(string $status, int $year): array
+    {
+        return $this->pullRequests
+            ->where($status, '>', Carbon::createFromDate($year)->firstOfYear())
+            ->where($status, '<', Carbon::createFromDate($year)->lastOfYear())
+            ->orderBy($status, 'ASC')
+            ->get()
+            ->toArray();
+    }
+
+    /**
+     * @param int $year
+     * @return array
+     */
+    private function getFirstTimeContributorsYear(int $year): array
     {
         $data = $this->getRangeArray($year);
         $result = $this->contributors
@@ -214,6 +230,38 @@ class PullRequests extends Statistics
 
         foreach ($result as $item) {
             $data['total'][Carbon::createFromTimestamp(strtotime($item['first_contribution']))->month]++;
+        }
+        return $data;
+    }
+
+    private function getTotalContributorsByYearAndMonth(int $year): array
+    {
+        $data = [
+            'contributors' => [],
+            'total' => [
+                1 => 0,
+                2 => 0,
+                3 => 0,
+                4 => 0,
+                5 => 0,
+                6 => 0,
+                7 => 0,
+                8 => 0,
+                9 => 0,
+                10 => 0,
+                11 => 0,
+                12 => 0,
+            ]];
+        $result = $this->fetchPullRequestsByStatusAndYear('created', $year);
+        foreach ($result as $item) {
+            $month = Carbon::createFromTimestamp(strtotime($item['created']))->month;
+            if (!isset($data['contributors'][$month][$item['author']])) {
+                $data['contributors'][$month][$item['author']] = 1;
+                $data['total'][$month]++;
+            }
+            if (!isset($data['contributors_total'][$item['author']])) {
+                $data['contributors']['total'][$item['author']] = 1;
+            }
         }
         return $data;
     }

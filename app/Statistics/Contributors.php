@@ -36,6 +36,20 @@ class Contributors extends Statistics
         $this->storeDataByYear(self::FILENAME, $year, $data);
     }
 
+    public function storeContributorsByMonth(int $year, int $month)
+    {
+        $data = [
+            'generator' => self::GENERATOR,
+            'title' => $year,
+            'generated' => Carbon::now(),
+        ];
+        $contributors = $this->fetchContributorsByYear($year);
+        if (isset($contributors['totalByMonth'][$month])) {
+            $data['contributors'] = $this->getSortedContributors($contributors['totalByMonth'][$month]);
+            $this->storeDataByYear(sprintf('%s/%d', self::FILENAME, $month), $year, $data);
+        }
+    }
+
     /**
      * @param string $repository
      * @param int $year
@@ -87,6 +101,7 @@ class Contributors extends Statistics
             $firstTimeContributors = $this->getFirstTimeContributorsByYear($year);
 
             $total = [];
+            $totalByMonth = [];
             $byRepo = [];
             $byRepoAndMonth = [];
             foreach ($result as $item) {
@@ -101,6 +116,15 @@ class Contributors extends Statistics
                 $total[$item['author']]['first_time'] ?? $total[$item['author']]['first_time'] = isset($firstTimeContributors[$item['author']]);
                 $total[$item['author']]['_pull_requests'] ?? $total[$item['author']]['_pull_requests'] = [];
                 $total[$item['author']]['created']++;
+
+                $totalByMonth[$month][$item['author']]['avatar_url'] = $this->getAvatarUrl($item['author'], $item['meta']);
+                $totalByMonth[$month][$item['author']]['author'] = $item['author'];
+                $totalByMonth[$month][$item['author']]['created'] ?? $totalByMonth[$month][$item['author']]['created'] = 0;
+                $totalByMonth[$month][$item['author']]['closed'] ?? $totalByMonth[$month][$item['author']]['closed'] = 0;
+                $totalByMonth[$month][$item['author']]['merged'] ?? $totalByMonth[$month][$item['author']]['merged'] = 0;
+                $totalByMonth[$month][$item['author']]['created']++;
+//                $totalByMonth[$item['author']]['first_time'] ?? $total[$item['author']]['first_time'] = isset($firstTimeContributors[$item['author']]);
+//                $totalByMonth[$item['author']]['_pull_requests'] ?? $total[$item['author']]['_pull_requests'] = [];
 
 
                 $byRepo[$item['repo']][$item['author']]['avatar_url'] = $this->getAvatarUrl($item['author'], $item['meta']);
@@ -124,7 +148,11 @@ class Contributors extends Statistics
                     $byRepoAndMonth[$item['repo']][$month][$item['author']]['created'] ?? $byRepoAndMonth[$item['repo']][$month][$item['author']]['created'] = 0;
                     $byRepoAndMonth[$item['repo']][$month][$item['author']]['closed'] ?? $byRepoAndMonth[$item['repo']][$month][$item['author']]['closed'] = 0;
                     $byRepoAndMonth[$item['repo']][$month][$item['author']]['merged'] ?? $byRepoAndMonth[$item['repo']][$month][$item['author']]['merged'] = 0;
+                    $totalByMonth[$month][$item['author']]['created'] ?? $totalByMonth[$month][$item['author']]['created'] = 0;
+                    $totalByMonth[$month][$item['author']]['closed'] ?? $totalByMonth[$month][$item['author']]['closed'] = 0;
+                    $totalByMonth[$month][$item['author']]['merged'] ?? $totalByMonth[$month][$item['author']]['merged'] = 0;
                     $byRepoAndMonth[$item['repo']][$month][$item['author']]['closed']++;
+                    $totalByMonth[$month][$item['author']]['closed']++;
                 }
                 if ($item['merged'] && $year === Carbon::createFromTimeString($item['merged'])->year) {
                     $month = Carbon::createFromTimeString($item['merged'])->month;
@@ -133,7 +161,11 @@ class Contributors extends Statistics
                     $byRepoAndMonth[$item['repo']][$month][$item['author']]['created'] ?? $byRepoAndMonth[$item['repo']][$month][$item['author']]['created'] = 0;
                     $byRepoAndMonth[$item['repo']][$month][$item['author']]['closed'] ?? $byRepoAndMonth[$item['repo']][$month][$item['author']]['closed'] = 0;
                     $byRepoAndMonth[$item['repo']][$month][$item['author']]['merged'] ?? $byRepoAndMonth[$item['repo']][$month][$item['author']]['merged'] = 0;
+                    $totalByMonth[$month][$item['author']]['created'] ?? $totalByMonth[$month][$item['author']]['created'] = 0;
+                    $totalByMonth[$month][$item['author']]['closed'] ?? $totalByMonth[$month][$item['author']]['closed'] = 0;
+                    $totalByMonth[$month][$item['author']]['merged'] ?? $totalByMonth[$month][$item['author']]['merged'] = 0;
                     $byRepoAndMonth[$item['repo']][$month][$item['author']]['merged']++;
+                    $totalByMonth[$month][$item['author']]['merged']++;
                 }
 
                 $total[$item['author']]['rejected'] = $this->getRejected([$total[$item['author']]['closed']], [$total[$item['author']]['merged']])[0];
@@ -147,13 +179,16 @@ class Contributors extends Statistics
                     'title' => $item['title']
                 ];
 
+                $totalByMonth[$month][$item['author']]['rejected'] ?? $this->getRejected([$totalByMonth[$month][$item['author']]['closed']], [$totalByMonth[$month][$item['author']]['merged']])[0];
+                $totalByMonth[$month][$item['author']]['acceptance_rate'] ?? $this->getAcceptanceRate([$totalByMonth[$month][$item['author']]['closed']], [$totalByMonth[$month][$item['author']]['merged']])[0];
+
                 $byRepo[$item['repo']][$item['author']]['rejected'] = $this->getRejected([$byRepo[$item['repo']][$item['author']]['closed']], [$byRepo[$item['repo']][$item['author']]['merged']])[0];
                 $byRepo[$item['repo']][$item['author']]['acceptance_rate'] = $this->getAcceptanceRate([$byRepo[$item['repo']][$item['author']]['closed']], [$byRepo[$item['repo']][$item['author']]['merged']])[0];
 
                 $byRepoAndMonth[$item['repo']][$month][$item['author']]['rejected'] = $this->getRejected([$byRepoAndMonth[$item['repo']][$month][$item['author']]['closed']], [$byRepoAndMonth[$item['repo']][$month][$item['author']]['merged']])[0];
                 $byRepoAndMonth[$item['repo']][$month][$item['author']]['acceptance_rate'] = $this->getAcceptanceRate([$byRepoAndMonth[$item['repo']][$month][$item['author']]['closed']], [$byRepoAndMonth[$item['repo']][$month][$item['author']]['merged']])[0];
             }
-            $this->processedContributors = ['total' => $total, 'byRepo' => $byRepo, 'byRepoAndMonth' => $byRepoAndMonth];
+            $this->processedContributors = ['total' => $total, 'byRepo' => $byRepo, 'byRepoAndMonth' => $byRepoAndMonth, 'totalByMonth' => $totalByMonth];
         }
         return $this->processedContributors;
     }
