@@ -48,7 +48,7 @@ class Generate extends AbstractCommand
                 $sitemap->add(Url::create($this->getUrl($appUrl, ['repositories', $fileParts[1], $fileParts[2], $fileParts[0]]))->setPriority(0.8));
             } elseif (isset($fileParts[2])) {
                 if ($fileParts[1] === 'contributors') {
-                    if(in_array($fileParts[2], range(1,12))) {
+                    if (in_array($fileParts[2], range(1, 12))) {
                         if ($fileParts[2] <= 9) {
                             $fileParts[2] = sprintf('0%s', $fileParts[2]);
                         }
@@ -70,6 +70,7 @@ class Generate extends AbstractCommand
         }
         $sitemap->add(Url::create($this->getUrl($appUrl, ['about']))->setPriority(0.8));
         $sitemap->add(Url::create($this->getUrl($appUrl, ['']))->setPriority(1.0));
+        $this->output->writeln(sprintf('Total entries: %d', \count($sitemap->getTags())));
         $sitemap->writeToFile(self::FILE_PATH);
     }
 
